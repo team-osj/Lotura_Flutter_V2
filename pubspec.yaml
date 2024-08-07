@@ -3,8 +3,8 @@ description: "A new Flutter project."
 
 publish_to: 'none'
 
-# 메인 페이지 AppBar 구현
-version: 1.0.2+3
+# switch 버튼의 빈 공간을 클릭하면 이벤트가 발생하지 않던 오류 수정
+version: 1.0.3+4
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -29,6 +29,7 @@ flutter:
 
   assets:
     - assets/icon/core/
+    - assets/image/
 
   fonts:
     - family: Pretendard
