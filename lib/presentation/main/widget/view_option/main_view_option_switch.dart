@@ -13,6 +13,7 @@ class MainViewOptionSwitch extends ConsumerStatefulWidget {
 }
 
 class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
+  static const double width = 170, height = 38, itemWidth = 79, itemHeight = 30;
   @override
   Widget build(BuildContext context) {
     /// 화면 옵션 확인
@@ -22,8 +23,8 @@ class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
     return Row(
       children: [
         Container(
-          width: 170,
-          height: 38,
+          width: width,
+          height: height,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             color: LoturaColor.gray50,
@@ -38,8 +39,8 @@ class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
                   alignment: Alignment(viewOption == 0 ? -1 : 1, 0),
                   duration: const Duration(milliseconds: 200),
                   child: Container(
-                    width: 79,
-                    height: 30,
+                    width: itemWidth,
+                    height: itemHeight,
                     decoration: BoxDecoration(
                       color: LoturaColor.white,
                       borderRadius: BorderRadius.circular(4),
@@ -47,7 +48,6 @@ class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
                   ),
                 ),
                 GestureDetector(
-                  behavior: HitTestBehavior.translucent,
                   onTap: () {
                     /// 이벤트 실행 시, 화면에 변화가 필요 없다면 이벤트가 실행되지 않도록 예외처리
                     if (viewOption == 1) {
@@ -57,13 +57,15 @@ class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
                   child: Align(
                     alignment: const Alignment(-1, 0),
                     child: MainViewOptionButton(
+                      width: itemWidth,
+                      /// 사이드 부분을 터치하는 경우까지 고려해서 높이 지정
+                      height: height,
                       text: "내 세탁실",
                       isSwitched: viewOption == 0 ? true : false,
                     ),
                   ),
                 ),
                 GestureDetector(
-                  behavior: HitTestBehavior.translucent,
                   onTap: () {
                     /// 이벤트 실행 시, 화면에 변화가 필요 없다면 이벤트가 실행되지 않도록 예외처리
                     if (viewOption == 0) {
@@ -73,6 +75,9 @@ class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
                   child: Align(
                     alignment: const Alignment(1, 0),
                     child: MainViewOptionButton(
+                      width: itemWidth,
+                      /// 사이드 부분을 터치하는 경우까지 고려해서 높이 지정
+                      height: height,
                       text: "세탁실 현황",
                       isSwitched: viewOption == 1 ? true : false,
                     ),
