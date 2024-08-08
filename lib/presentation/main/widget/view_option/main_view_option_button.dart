@@ -7,22 +7,30 @@ class MainViewOptionButton extends StatelessWidget {
   final String text;
   /// Switch 되었는지 판단
   final bool isSwitched;
+  /// button 길이
+  final double width, height;
 
   const MainViewOptionButton({
     super.key,
     required this.text,
     required this.isSwitched,
+    required this.height,
+    required this.width,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       /// 옵션 별로 텍스트 길이가 각기 달라, 수치화 적용
-      width: 79,
+      width: width,
+      height: height,
+      /// 투명한 색상 지정
+      color: LoturaColor.transparent,
+      /// 가운데 정렬
+      alignment: Alignment.center,
       child: Text(
         text,
         /// 텍스트 가운데 정렬
-        textAlign: TextAlign.center,
         style: LoturaTextStyle.body2(
           color: isSwitched ? LoturaColor.main900 : LoturaColor.black,
         ),
