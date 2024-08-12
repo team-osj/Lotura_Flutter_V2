@@ -29,7 +29,7 @@ class LoturaColor {
   static Color gray800 = const Color(0xFF6F6D72);
   static Color gray900 = const Color(0xFF5C5A60);
 
-  static Color green10 = const Color(0xFFF2FFF9);
+  static Color green10 = const Color(0xFFF1FFF1);
   static Color green20 = const Color(0xFF62AE55);
 
   static Color red10 = const Color(0xFFFFF7F7);

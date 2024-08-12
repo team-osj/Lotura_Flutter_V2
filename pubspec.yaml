@@ -3,8 +3,8 @@ description: "A new Flutter project."
 
 publish_to: 'none'
 
-# switch 버튼의 텍스트를 클릭해야만 이벤트가 발생하는 오류 수정
-version: 1.0.4+5
+# 설정 페이지 구현
+version: 1.1.0+6
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -17,19 +17,26 @@ dependencies:
   go_router: ^14.2.3
   flutter_svg: ^2.0.10+1
   flutter_riverpod: ^2.5.1
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^3.0.0
+  build_runner: ^2.4.12
+  hive_generator: ^2.0.1
 
 flutter:
   uses-material-design: true
 
   assets:
     - assets/icon/core/
-    - assets/image/
+    - assets/icon/notice/
+    - assets/icon/setting/
+    - assets/image/core/
+    - assets/image/notice/
 
   fonts:
     - family: Pretendard
