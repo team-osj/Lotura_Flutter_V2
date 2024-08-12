@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:lotura_v2/core/constants/lotura_color.dart';
 
-class LoturaScaffold extends StatelessWidget {
+class LoturaLayout extends StatelessWidget {
   final Color? backgroundColor;
   final PreferredSizeWidget? appBar;
   final Widget child;
   final Widget? floatingActionButton, bottomSheet;
   final FloatingActionButtonLocation? floatingActionButtonLocation;
 
-  const LoturaScaffold({
+  const LoturaLayout({
     super.key,
     required this.child,
     this.backgroundColor,
