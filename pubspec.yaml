@@ -3,8 +3,8 @@ description: "A new Flutter project."
 
 publish_to: 'none'
 
-# switch 버튼의 텍스트를 클릭해야만 이벤트가 발생하는 오류 수정
-version: 1.0.4+5
+# 설정 페이지 구현
+version: 1.1.0+6
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
