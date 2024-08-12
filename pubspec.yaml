@@ -29,7 +29,10 @@ flutter:
 
   assets:
     - assets/icon/core/
-    - assets/image/
+    - assets/icon/notice/
+    - assets/icon/setting/
+    - assets/image/core/
+    - assets/image/notice/
 
   fonts:
     - family: Pretendard
