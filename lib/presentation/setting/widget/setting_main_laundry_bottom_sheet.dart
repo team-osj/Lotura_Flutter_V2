@@ -1,13 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
+import 'package:lotura_v2/core/provider/state/laundry/laundry_room_option.dart';
+import 'package:lotura_v2/presentation/setting/provider/get_laundry_room_option_view_model_provider.dart';
+import 'package:lotura_v2/presentation/setting/provider/state/update_laundry_room_option_state.dart';
+import 'package:lotura_v2/presentation/setting/provider/update_laundry_room_option_view_model_provider.dart';
+import 'package:lotura_v2/presentation/setting/widget/setting_laundry_locate_widget.dart';
 
-class SettingMainLaundryBottomSheet extends StatelessWidget {
+class SettingMainLaundryBottomSheet extends ConsumerWidget {
   const SettingMainLaundryBottomSheet({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final getLaundryRoomOption = ref.watch(getLaundryRoomOptionViewModelProvider);
+    final updateLaundryOption =
+        ref.read(updateLaundryRoomOptionViewModelProvider.notifier);
+    ref.listen(
+        updateLaundryRoomOptionViewModelProvider.select((value) => value),
+        (previous, next) {
+      switch (next) {
+        case UpdateLaundryRoomOptionState.success:
+          ref.read(getLaundryRoomOptionViewModelProvider.notifier).execute();
+        default:
+          null;
+      }
+    });
     return Container(
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
@@ -47,31 +66,23 @@ class SettingMainLaundryBottomSheet extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              child: Row(
-                children: [
-                  Text(
-                    "남자 학교측",
-                    style: LoturaTextStyle.button1(
-                      color: LoturaColor.black,
-                    ),
-                  ),
-                ],
-              ),
+            GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: () {
+                if (getLaundryRoomOption.option != "남자 학교측") {
+                  updateLaundryOption.execute(LaundryRoomOption.maleSchool);
+                }
+              },
+              child: const SettingLaundryLocateWidget(option: "남자 학교측"),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              child: Row(
-                children: [
-                  Text(
-                    "남자 기숙사측",
-                    style: LoturaTextStyle.button1(
-                      color: LoturaColor.black,
-                    ),
-                  ),
-                ],
-              ),
+            GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: () {
+                if (getLaundryRoomOption.option != "남자 기숙사측") {
+                  updateLaundryOption.execute(LaundryRoomOption.maleDormitory);
+                }
+              },
+              child: const SettingLaundryLocateWidget(option: "남자 기숙사측"),
             ),
             const SizedBox(height: 20),
           ],

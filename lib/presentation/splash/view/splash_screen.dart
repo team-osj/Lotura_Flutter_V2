@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lotura_v2/core/component/lotura_scaffold.dart';
 import 'package:lotura_v2/core/constants/lotura_asset.dart';
+import 'package:lotura_v2/core/layout/lotura_layout.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -22,10 +22,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return LoturaScaffold(
+    return LoturaLayout(
       child: Center(
         child: SvgPicture.asset(
-          "$coreAsset/o_icon.svg",
+          "$iconCoreAsset/o_icon.svg",
         ),
       ),
     );
