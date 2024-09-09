@@ -16,11 +16,14 @@ class LaundryScreen extends ConsumerStatefulWidget {
 class _LaundryScreenState extends ConsumerState<LaundryScreen> {
   @override
   void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.watch(getLaundryRoomOptionViewModelProvider).option ??
-          ref.read(getLaundryRoomOptionViewModelProvider.notifier).execute();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      /// 위젯이 mounted 되었는지 고려
+      if (mounted) {
+        ref.watch(getLaundryRoomOptionViewModelProvider).option ??
+            await ref.read(getLaundryRoomOptionViewModelProvider.notifier).execute();
+      }
     });
+    super.initState();
   }
 
   @override
@@ -37,7 +40,7 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
             children: [
               const SizedBox(height: 20),
               Text(
-                "남자 학교 측",
+                localLaundryRoomOption.replaceAll("측", " 측"),
                 style: LoturaTextStyle.heading3(
                   color: LoturaColor.black,
                 ),
@@ -48,8 +51,11 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
                   GestureDetector(
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
-                      if (localLaundryRoomOption != "남자 학교측") {
-                        updateLocalLaundryRoomOption.state = "남자 학교측";
+                      /// 위젯이 mounted 되었는지 판단
+                      if (context.mounted) {
+                        if (localLaundryRoomOption != "남자 학교측" && context.mounted) {
+                          updateLocalLaundryRoomOption.state = "남자 학교측";
+                        }
                       }
                     },
                     child: const LaundryRoomSelectRadioButton(
@@ -60,8 +66,11 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
                   GestureDetector(
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
-                      if (localLaundryRoomOption != "남자 기숙사측") {
-                        updateLocalLaundryRoomOption.state = "남자 기숙사측";
+                      /// 위젯이 mounted 되었는지 판단
+                      if (context.mounted) {
+                        if (localLaundryRoomOption != "남자 기숙사측" && context.mounted) {
+                          updateLocalLaundryRoomOption.state = "남자 기숙사측";
+                        }
                       }
                     },
                     child: const LaundryRoomSelectRadioButton(
@@ -69,7 +78,22 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
                     ),
                   ),
                 ],
-              )
+              ),
+              // GridView.builder(
+              //   shrinkWrap: true,
+              //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              //     crossAxisCount: 2,
+              //     crossAxisSpacing: 8,
+              //     mainAxisSpacing: 10,
+              //   ),
+              //   itemBuilder: (context, index) {
+              //     return Container(
+              //       color: Colors.red,
+              //       width: 20,
+              //       height: 20,
+              //     );
+              //   },
+              // ),
             ],
           ),
         ),
