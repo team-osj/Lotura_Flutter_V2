@@ -29,6 +29,7 @@ class SettingLaundryLocateWidget extends ConsumerWidget {
               color: LoturaColor.black,
             ),
           ),
+          /// loading indicator를 보여주기 위함.
           if (getLaundryRoomOptionState.option == option && updateLaundryRoomOptionState != UpdateLaundryRoomOptionState.loading)
             SvgPicture.asset("$iconSettingAsset/check_icon.svg"),
           if (updateLaundryRoomOptionState == UpdateLaundryRoomOptionState.loading)
