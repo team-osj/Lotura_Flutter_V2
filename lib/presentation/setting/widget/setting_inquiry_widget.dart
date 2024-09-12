@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 
+/// 문의하기 버튼 위젯
 class SettingInquiryWidget extends StatelessWidget {
   const SettingInquiryWidget({super.key});
 
