@@ -29,6 +29,7 @@ dev_dependencies:
   build_runner: ^2.4.12
   hive_generator: ^2.0.1
   flutter_native_splash: ^2.4.1
+  flutter_launcher_icons: ^0.13.1
 
 flutter_native_splash:
   color: "#FFFFFF"
@@ -42,6 +43,13 @@ flutter_native_splash:
     image: assets/image/core/lotura_splash_image.png
     fullscreen: true
     android_gravity: center
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  remove_alpha_ios: true
+  ios: true
+  image_path: "assets/icon/core/lotura_app_icon.png"
+  min_sdk_android: 21
 
 flutter:
   uses-material-design: true
