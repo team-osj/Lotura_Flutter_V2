@@ -30,6 +30,7 @@ class GetLaundryRoomOptionViewModel
         case LaundryRoomOption.female:
           state = state.copyWith(option: "여자 기숙사측");
         default:
+          /// option이 null일 경우(앱이 설치되고 처음 실행되었을 때)에도 기본값은 "남자 학교측"
           state = state.copyWith(option: "남자 학교측");
       }
 
