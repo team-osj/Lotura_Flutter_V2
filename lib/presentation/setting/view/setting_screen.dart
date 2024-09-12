@@ -7,6 +7,7 @@ import 'package:lotura_v2/presentation/setting/provider/get_laundry_room_option_
 import 'package:lotura_v2/presentation/setting/widget/setting_inquiry_widget.dart';
 import 'package:lotura_v2/presentation/setting/widget/setting_main_laundry_bottom_sheet.dart';
 import 'package:lotura_v2/presentation/setting/widget/setting_main_laundry_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingScreen extends ConsumerStatefulWidget {
   const SettingScreen({super.key});
@@ -16,12 +17,13 @@ class SettingScreen extends ConsumerStatefulWidget {
 }
 
 class _SettingScreenState extends ConsumerState<SettingScreen> {
-
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final laundryRoomOption = ref.watch(getLaundryRoomOptionViewModelProvider).option;
+      final laundryRoomOption =
+          ref.watch(getLaundryRoomOptionViewModelProvider).option;
+
       /// laundryRoomOption의 기본 값은 null이므로, null값을 option enum 타입으로 변경해줘야함.
       if (laundryRoomOption == null) {
         ref.read(getLaundryRoomOptionViewModelProvider.notifier).execute();
@@ -57,7 +59,10 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
             const SizedBox(height: 12),
             GestureDetector(
               behavior: HitTestBehavior.translucent,
-              onTap: () {},
+              onTap: () async => await launchUrl(
+                Uri.parse('https://open.kakao.com/o/sHjnH1Se'),
+                mode: LaunchMode.externalApplication,
+              ),
               child: const SettingInquiryWidget(),
             ),
           ],
