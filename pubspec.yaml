@@ -28,6 +28,20 @@ dev_dependencies:
   flutter_lints: ^3.0.0
   build_runner: ^2.4.12
   hive_generator: ^2.0.1
+  flutter_native_splash: ^2.4.1
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/image/core/lotura_splash_image.png
+  fullscreen: true
+  android_gravity: center
+  ios_content_mode: center
+
+  android_12:
+    color: "#FFFFFF"
+    image: assets/image/core/lotura_splash_image.png
+    fullscreen: true
+    android_gravity: center
 
 flutter:
   uses-material-design: true
