@@ -35,7 +35,7 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
   Widget build(BuildContext context) {
     return LoturaLayout(
       appBar: const LoturaAppBar(
-        popRoute: "/main",
+        popRoute: "/",
         title: "설정",
       ),
       child: Padding(

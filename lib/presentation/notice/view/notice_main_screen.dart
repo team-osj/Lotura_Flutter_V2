@@ -16,7 +16,7 @@ class _NoticeMainScreenState extends State<NoticeMainScreen> {
   @override
   Widget build(BuildContext context) {
     return LoturaLayout(
-      appBar: const LoturaAppBar(popRoute: "/main", title: "공지사항"),
+      appBar: const LoturaAppBar(popRoute: "/", title: "공지사항"),
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
