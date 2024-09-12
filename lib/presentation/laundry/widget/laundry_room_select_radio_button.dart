@@ -10,7 +10,7 @@ class LaundryRoomSelectRadioButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final localLaundryRoomOption = ref.watch(localLaundryRoomOptionProvider);
+    final localLaundryRoomOption = ref.watch(localLaundryRoomOptionViewModelProvider).option;
     return Container(
       height: 35,
       alignment: Alignment.center,
