@@ -14,23 +14,12 @@ class LaundryScreen extends ConsumerStatefulWidget {
 }
 
 class _LaundryScreenState extends ConsumerState<LaundryScreen> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final laundryRoomOption = ref.watch(getLaundryRoomOptionViewModelProvider).option;
-      /// laundryRoomOption의 기본 값은 null이므로, null값을 option enum 타입으로 변경해줘야함.
-      if (laundryRoomOption == null) {
-        ref.read(getLaundryRoomOptionViewModelProvider.notifier).execute();
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    final localLaundryRoomOption = ref.watch(localLaundryRoomOptionProvider);
+    final localLaundryRoomOption = ref.watch(localLaundryRoomOptionViewModelProvider).option;
     final updateLocalLaundryRoomOption =
-        ref.read(localLaundryRoomOptionProvider.notifier);
+        ref.read(localLaundryRoomOptionViewModelProvider.notifier);
     return LoturaLayout(
       child: SingleChildScrollView(
         child: Padding(
@@ -40,7 +29,7 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
             children: [
               const SizedBox(height: 20),
               Text(
-                localLaundryRoomOption.replaceAll("측", " 측"),
+                localLaundryRoomOption!.replaceAll("측", " 측"),
                 style: LoturaTextStyle.heading3(
                   color: LoturaColor.black,
                 ),
@@ -52,7 +41,7 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
                       if (localLaundryRoomOption != "남자 학교측") {
-                        updateLocalLaundryRoomOption.state = "남자 학교측";
+                        updateLocalLaundryRoomOption.changeOption(option: "남자 학교측");
                       }
                     },
                     child: const LaundryRoomSelectRadioButton(
@@ -64,7 +53,7 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
                       if (localLaundryRoomOption != "남자 기숙사측") {
-                        updateLocalLaundryRoomOption.state = "남자 기숙사측";
+                        updateLocalLaundryRoomOption.changeOption(option: "남자 기숙사측");
                       }
                     },
                     child: const LaundryRoomSelectRadioButton(
