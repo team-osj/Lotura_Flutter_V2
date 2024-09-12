@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
@@ -29,6 +28,7 @@ class SettingLaundryLocateWidget extends ConsumerWidget {
               color: LoturaColor.black,
             ),
           ),
+          /// loading indicator를 보여주기 위함.
           if (getLaundryRoomOptionState.option == option && updateLaundryRoomOptionState != UpdateLaundryRoomOptionState.loading)
             SvgPicture.asset("$iconSettingAsset/check_icon.svg"),
           if (updateLaundryRoomOptionState == UpdateLaundryRoomOptionState.loading)

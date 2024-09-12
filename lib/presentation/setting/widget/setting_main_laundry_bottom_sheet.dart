@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 import 'package:lotura_v2/core/provider/state/laundry/laundry_room_option.dart';
+import 'package:lotura_v2/core/utils/lotura_util.dart';
 import 'package:lotura_v2/presentation/setting/provider/get_laundry_room_option_view_model_provider.dart';
 import 'package:lotura_v2/presentation/setting/provider/state/update_laundry_room_option_state.dart';
 import 'package:lotura_v2/presentation/setting/provider/update_laundry_room_option_view_model_provider.dart';
@@ -22,7 +23,12 @@ class SettingMainLaundryBottomSheet extends ConsumerWidget {
         (previous, next) {
       switch (next) {
         case UpdateLaundryRoomOptionState.success:
+          /// 변경된 값 렌더링
           ref.read(getLaundryRoomOptionViewModelProvider.notifier).execute();
+          /// BottomSheet pop 처리
+          context.pop("/setting");
+          /// ToastMessage 띄우기
+          LoturaUtil.loturaToast(context: context, text: "메인 세탁기 설정이 변경되었습니다.");
         default:
           null;
       }

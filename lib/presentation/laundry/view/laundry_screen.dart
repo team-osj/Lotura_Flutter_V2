@@ -14,20 +14,12 @@ class LaundryScreen extends ConsumerStatefulWidget {
 }
 
 class _LaundryScreenState extends ConsumerState<LaundryScreen> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.watch(getLaundryRoomOptionViewModelProvider).option ??
-          ref.read(getLaundryRoomOptionViewModelProvider.notifier).execute();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    final localLaundryRoomOption = ref.watch(localLaundryRoomOptionProvider);
+    final localLaundryRoomOption = ref.watch(localLaundryRoomOptionViewModelProvider).option;
     final updateLocalLaundryRoomOption =
-        ref.read(localLaundryRoomOptionProvider.notifier);
+        ref.read(localLaundryRoomOptionViewModelProvider.notifier);
     return LoturaLayout(
       child: SingleChildScrollView(
         child: Padding(
@@ -37,7 +29,7 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
             children: [
               const SizedBox(height: 20),
               Text(
-                "남자 학교 측",
+                localLaundryRoomOption!.replaceAll("측", " 측"),
                 style: LoturaTextStyle.heading3(
                   color: LoturaColor.black,
                 ),
@@ -49,7 +41,7 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
                       if (localLaundryRoomOption != "남자 학교측") {
-                        updateLocalLaundryRoomOption.state = "남자 학교측";
+                        updateLocalLaundryRoomOption.changeOption(option: "남자 학교측");
                       }
                     },
                     child: const LaundryRoomSelectRadioButton(
@@ -61,7 +53,7 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
                       if (localLaundryRoomOption != "남자 기숙사측") {
-                        updateLocalLaundryRoomOption.state = "남자 기숙사측";
+                        updateLocalLaundryRoomOption.changeOption(option: "남자 기숙사측");
                       }
                     },
                     child: const LaundryRoomSelectRadioButton(
@@ -69,7 +61,7 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),
