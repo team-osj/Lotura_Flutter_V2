@@ -3,8 +3,8 @@ description: "A new Flutter project."
 
 publish_to: 'none'
 
-# 메인 세탁실 변경 기능, 세탁실 Radio 버튼 구현
-version: 1.2.0+7
+# 메인 세탁실 설정 리팩토링, 로컬 세탁실 설정 기능 추가
+version: 2.2.1+8
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
