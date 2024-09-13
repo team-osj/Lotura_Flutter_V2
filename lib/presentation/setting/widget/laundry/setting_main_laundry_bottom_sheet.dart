@@ -3,12 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
-import 'package:lotura_v2/core/provider/state/laundry/laundry_room_option.dart';
+import 'package:lotura_v2/core/hive/laundry_room_option.dart';
 import 'package:lotura_v2/core/utils/lotura_util.dart';
 import 'package:lotura_v2/presentation/setting/provider/get_laundry_room_option_view_model_provider.dart';
 import 'package:lotura_v2/presentation/setting/provider/state/update_laundry_room_option_state.dart';
 import 'package:lotura_v2/presentation/setting/provider/update_laundry_room_option_view_model_provider.dart';
-import 'package:lotura_v2/presentation/setting/widget/setting_laundry_locate_widget.dart';
+import 'package:lotura_v2/presentation/setting/widget/laundry/setting_laundry_locate_widget.dart';
 
 class SettingMainLaundryBottomSheet extends ConsumerWidget {
   const SettingMainLaundryBottomSheet({super.key});

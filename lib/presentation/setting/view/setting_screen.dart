@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lotura_v2/core/component/lotura_app_bar.dart';
 import 'package:lotura_v2/core/layout/lotura_layout.dart';
-import 'package:lotura_v2/presentation/setting/widget/setting_alarm_widget.dart';
-import 'package:lotura_v2/presentation/setting/widget/setting_inquiry_widget.dart';
-import 'package:lotura_v2/presentation/setting/widget/setting_main_laundry_widget.dart';
+import 'package:lotura_v2/presentation/setting/widget/alarm/setting_alarm_widget.dart';
+import 'package:lotura_v2/presentation/setting/widget/inquiry/setting_inquiry_widget.dart';
+import 'package:lotura_v2/presentation/setting/widget/laundry/setting_main_laundry_widget.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
