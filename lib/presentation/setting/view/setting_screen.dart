@@ -17,21 +17,21 @@ class _SettingScreenState extends ConsumerState<SettingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return LoturaLayout(
-      appBar: const LoturaAppBar(
+    return const LoturaLayout(
+      appBar: LoturaAppBar(
         popRoute: "/",
         title: "설정",
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding: EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           children: [
-            const SizedBox(height: 12),
-            const SettingMainLaundryWidget(),
-            const SizedBox(height: 12),
-            const SettingAlarmWidget(),
-            const SizedBox(height: 12),
-            const SettingInquiryWidget(),
+            SizedBox(height: 12),
+            SettingMainLaundryWidget(),
+            SizedBox(height: 12),
+            SettingAlarmWidget(),
+            SizedBox(height: 12),
+            SettingInquiryWidget(),
           ],
         ),
       ),
