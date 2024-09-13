@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:lotura_v2/core/provider/state/laundry/laundry_room_option.dart';
+import 'package:lotura_v2/core/hive/laundry_room_option.dart';
 
 class LocalLaundryDataSource {
   late final Box<LaundryRoomOption> _laundryBox;
