@@ -8,21 +8,24 @@ class SettingAlarmWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "알림 설정",
-            style: LoturaTextStyle.subTitle2(
-              color: LoturaColor.black,
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "알림 설정",
+              style: LoturaTextStyle.subTitle2(
+                color: LoturaColor.black,
+              ),
             ),
-          ),
-          SvgPicture.asset(
-            "$iconSettingAsset/right_arrow_icon.svg",
-          ),
-        ],
+            SvgPicture.asset(
+              "$iconSettingAsset/right_arrow_icon.svg",
+            ),
+          ],
+        ),
       ),
     );
   }
