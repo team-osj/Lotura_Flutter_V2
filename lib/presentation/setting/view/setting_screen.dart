@@ -17,19 +17,6 @@ class SettingScreen extends ConsumerStatefulWidget {
 }
 
 class _SettingScreenState extends ConsumerState<SettingScreen> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final laundryRoomOption =
-          ref.watch(getLaundryRoomOptionViewModelProvider).option;
-
-      /// laundryRoomOption의 기본 값은 null이므로, null값을 option enum 타입으로 변경해줘야함.
-      if (laundryRoomOption == null) {
-        ref.read(getLaundryRoomOptionViewModelProvider.notifier).execute();
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
