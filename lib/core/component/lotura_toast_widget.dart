@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
-import 'package:lotura_v2/core/utils/lotura_util.dart';
+
+enum LoturaToastState {
+  success,
+  failure
+}
 
 class LoturaToastWidget extends StatefulWidget {
   final String text;
+
 
   const LoturaToastWidget({
     super.key,
@@ -38,7 +43,7 @@ class _LoturaToastWidgetState extends State<LoturaToastWidget> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     SvgPicture.asset(
-                      "$iconCoreAsset/circle_check_icon.svg",
+                      "$iconCoreAsset/circle_success_icon.svg",
                     ),
                     const SizedBox(width: 8),
                     Text(
