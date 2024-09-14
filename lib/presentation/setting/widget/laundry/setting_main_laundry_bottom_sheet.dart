@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lotura_v2/core/component/lotura_toast_widget.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 import 'package:lotura_v2/core/hive/laundry_room_option.dart';
 import 'package:lotura_v2/core/utils/lotura_util.dart';
@@ -15,7 +16,8 @@ class SettingMainLaundryBottomSheet extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getLaundryRoomOption = ref.watch(getLaundryRoomOptionViewModelProvider);
+    final getLaundryRoomOption =
+        ref.watch(getLaundryRoomOptionViewModelProvider);
     final updateLaundryOption =
         ref.read(updateLaundryRoomOptionViewModelProvider.notifier);
     ref.listen(
@@ -23,12 +25,19 @@ class SettingMainLaundryBottomSheet extends ConsumerWidget {
         (previous, next) {
       switch (next) {
         case UpdateLaundryRoomOptionState.success:
+
           /// 변경된 값 렌더링
           ref.read(getLaundryRoomOptionViewModelProvider.notifier).execute();
+
           /// BottomSheet pop 처리
           context.pop("/setting");
+
           /// ToastMessage 띄우기
-          LoturaUtil.loturaToast(context: context, text: "메인 세탁기 설정이 변경되었습니다.");
+          LoturaUtil.loturaToast(
+            context: context,
+            text: "메인 세탁기 설정이 변경되었습니다.",
+            type: LoturaToastType.success,
+          );
         default:
           null;
       }
