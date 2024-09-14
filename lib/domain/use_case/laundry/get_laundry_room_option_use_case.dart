@@ -9,5 +9,5 @@ class GetLaundryRoomOptionUseCase {
   }) : _laundryRepository = laundryRepository;
 
   Future<LaundryRoomOption?> execute() async =>
-      await _laundryRepository.getRoomOption(key: "laundryRoomOption");
+      await _laundryRepository.getRoomOption();
 }

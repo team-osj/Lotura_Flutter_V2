@@ -11,13 +11,11 @@ class LaundryRepositoryImpl implements LaundryRepository {
 
   @override
   Future<void> updateRoomOption({
-    required String key,
     required LaundryRoomOption value,
   }) async =>
-      _localLaundryDataSource.updateRoomOption(key: key, value: value);
+      _localLaundryDataSource.updateRoomOption(value: value);
 
   @override
-  Future<LaundryRoomOption?> getRoomOption({
-    required String key,
-  }) async => _localLaundryDataSource.getRoomOption(key: key);
+  Future<LaundryRoomOption?> getRoomOption() async =>
+      _localLaundryDataSource.getRoomOption();
 }

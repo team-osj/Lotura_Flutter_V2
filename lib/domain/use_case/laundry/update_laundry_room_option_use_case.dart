@@ -11,5 +11,5 @@ class UpdateLaundryRoomOptionUseCase {
   Future<void> execute({
     required LaundryRoomOption value,
   }) async =>
-      await _laundryRepository.updateRoomOption(value: value, key: "laundryRoomOption");
+      await _laundryRepository.updateRoomOption(value: value);
 }

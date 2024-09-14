@@ -11,18 +11,15 @@ class LocalLaundryDataSource {
   }
 
   Future<void> updateRoomOption({
-    required String key,
     required LaundryRoomOption value,
   }) async {
-    await init(key: key);
-    return _laundryBox.put(key, value);
+    await init(key: "laundryRoomOption");
+    return _laundryBox.put("laundryRoomOption", value);
   }
 
-  Future<LaundryRoomOption?> getRoomOption({
-    required String key,
-  }) async {
-    await init(key: key);
-    return _laundryBox.get(key);
+  Future<LaundryRoomOption?> getRoomOption() async {
+    await init(key: "laundryRoomOption");
+    return _laundryBox.get("laundryRoomOption");
   }
 }
 
