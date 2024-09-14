@@ -4,7 +4,7 @@ import 'package:lotura_v2/core/hive/laundry_room_option.dart';
 class LocalLaundryDataSource {
   late final Box<LaundryRoomOption> _laundryBox;
 
-  Future<void> init({required String key}) async {
+  Future<void> init() async {
     if (!Hive.isBoxOpen("laundryRoomOption")) {
       _laundryBox = await Hive.openBox<LaundryRoomOption>("laundryRoomOption");
     }
@@ -13,12 +13,12 @@ class LocalLaundryDataSource {
   Future<void> updateRoomOption({
     required LaundryRoomOption value,
   }) async {
-    await init(key: "laundryRoomOption");
+    await init();
     return _laundryBox.put("laundryRoomOption", value);
   }
 
   Future<LaundryRoomOption?> getRoomOption() async {
-    await init(key: "laundryRoomOption");
+    await init();
     return _laundryBox.get("laundryRoomOption");
   }
 }
