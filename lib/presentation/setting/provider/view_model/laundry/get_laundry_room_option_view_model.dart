@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lotura_v2/core/hive/laundry_room_option.dart';
 import 'package:lotura_v2/domain/entity/laundry/laundry_room_option_entity.dart';
 import 'package:lotura_v2/domain/use_case/laundry/get_laundry_room_option_use_case.dart';
-import 'package:lotura_v2/presentation/setting/provider/state/get_laundry_room_option_state.dart';
+import 'package:lotura_v2/presentation/setting/provider/state/laundry/get_laundry_room_option_state.dart';
 
 class GetLaundryRoomOptionViewModel
     extends StateNotifier<LaundryRoomOptionEntity<GetLaundryRoomOptionState>> {

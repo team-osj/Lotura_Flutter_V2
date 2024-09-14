@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lotura_v2/core/hive/laundry_room_option.dart';
 import 'package:lotura_v2/domain/use_case/laundry/update_laundry_room_option_use_case.dart';
-import 'package:lotura_v2/presentation/setting/provider/state/update_laundry_room_option_state.dart';
+import 'package:lotura_v2/presentation/setting/provider/state/laundry/update_laundry_room_option_state.dart';
 
 class UpdateLaundryRoomOptionViewModel
     extends StateNotifier<UpdateLaundryRoomOptionState> {

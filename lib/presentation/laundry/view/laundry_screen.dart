@@ -4,7 +4,6 @@ import 'package:lotura_v2/core/constants/lotura_style.dart';
 import 'package:lotura_v2/core/layout/lotura_layout.dart';
 import 'package:lotura_v2/presentation/laundry/provider/local_laundry_room_option_provider.dart';
 import 'package:lotura_v2/presentation/laundry/widget/laundry_room_select_radio_button.dart';
-import 'package:lotura_v2/presentation/setting/provider/get_laundry_room_option_view_model_provider.dart';
 
 class LaundryScreen extends ConsumerStatefulWidget {
   const LaundryScreen({super.key});
