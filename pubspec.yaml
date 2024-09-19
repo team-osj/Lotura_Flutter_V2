@@ -56,9 +56,11 @@ flutter:
 
   assets:
     - assets/icon/core/
+    - assets/icon/laundry/
     - assets/icon/notice/
     - assets/icon/setting/
     - assets/image/core/
+    - assets/image/apply/
     - assets/image/notice/
 
   fonts:
