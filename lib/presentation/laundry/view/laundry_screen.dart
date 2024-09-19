@@ -29,46 +29,48 @@ class LaundryScreen extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              Row(
-                children: [
-                  GestureDetector(
-                    behavior: HitTestBehavior.translucent,
-                    onTap: () {
-                      if (localLaundryRoomOption != "남자 학교측") {
-                        updateLocalLaundryRoomOption.changeOption(
-                            option: "남자 학교측");
-                      }
-                    },
-                    child: const LaundryRoomSelectRadioButton(
-                      option: "남자 학교측",
+              FittedBox(
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () {
+                        if (localLaundryRoomOption != "남자 학교측") {
+                          updateLocalLaundryRoomOption.changeOption(
+                              option: "남자 학교측");
+                        }
+                      },
+                      child: const LaundryRoomSelectRadioButton(
+                        option: "남자 학교측",
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 12),
-                  GestureDetector(
-                    behavior: HitTestBehavior.translucent,
-                    onTap: () {
-                      if (localLaundryRoomOption != "남자 기숙사측") {
-                        updateLocalLaundryRoomOption.changeOption(
-                            option: "남자 기숙사측");
-                      }
-                    },
-                    child: const LaundryRoomSelectRadioButton(
-                      option: "남자 기숙사측",
+                    const SizedBox(width: 12),
+                    GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () {
+                        if (localLaundryRoomOption != "남자 기숙사측") {
+                          updateLocalLaundryRoomOption.changeOption(
+                              option: "남자 기숙사측");
+                        }
+                      },
+                      child: const LaundryRoomSelectRadioButton(
+                        option: "남자 기숙사측",
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 12),
-                  GestureDetector(
-                    behavior: HitTestBehavior.translucent,
-                    onTap: () {
-                      if (localLaundryRoomOption != "여자 기숙사측") {
-                        updateLocalLaundryRoomOption.changeOption(option: "여자 기숙사측");
-                      }
-                    },
-                    child: const LaundryRoomSelectRadioButton(
-                      option: "여자 기숙사측",
+                    const SizedBox(width: 12),
+                    GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () {
+                        if (localLaundryRoomOption != "여자 기숙사측") {
+                          updateLocalLaundryRoomOption.changeOption(option: "여자 기숙사측");
+                        }
+                      },
+                      child: const LaundryRoomSelectRadioButton(
+                        option: "여자 기숙사측",
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
