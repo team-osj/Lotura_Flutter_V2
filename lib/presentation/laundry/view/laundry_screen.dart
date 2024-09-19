@@ -5,18 +5,13 @@ import 'package:lotura_v2/core/layout/lotura_layout.dart';
 import 'package:lotura_v2/presentation/laundry/provider/local_laundry_room_option_provider.dart';
 import 'package:lotura_v2/presentation/laundry/widget/laundry_room_select_radio_button.dart';
 
-class LaundryScreen extends ConsumerStatefulWidget {
+class LaundryScreen extends ConsumerWidget {
   const LaundryScreen({super.key});
 
   @override
-  ConsumerState<LaundryScreen> createState() => _LaundryScreenState();
-}
-
-class _LaundryScreenState extends ConsumerState<LaundryScreen> {
-
-  @override
-  Widget build(BuildContext context) {
-    final localLaundryRoomOption = ref.watch(localLaundryRoomOptionViewModelProvider).option;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final localLaundryRoomOption =
+        ref.watch(localLaundryRoomOptionViewModelProvider).option;
     final updateLocalLaundryRoomOption =
         ref.read(localLaundryRoomOptionViewModelProvider.notifier);
     return LoturaLayout(
@@ -40,7 +35,8 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
                       if (localLaundryRoomOption != "남자 학교측") {
-                        updateLocalLaundryRoomOption.changeOption(option: "남자 학교측");
+                        updateLocalLaundryRoomOption.changeOption(
+                            option: "남자 학교측");
                       }
                     },
                     child: const LaundryRoomSelectRadioButton(
@@ -52,11 +48,24 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
                       if (localLaundryRoomOption != "남자 기숙사측") {
-                        updateLocalLaundryRoomOption.changeOption(option: "남자 기숙사측");
+                        updateLocalLaundryRoomOption.changeOption(
+                            option: "남자 기숙사측");
                       }
                     },
                     child: const LaundryRoomSelectRadioButton(
                       option: "남자 기숙사측",
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  GestureDetector(
+                    behavior: HitTestBehavior.translucent,
+                    onTap: () {
+                      if (localLaundryRoomOption != "여자 기숙사측") {
+                        updateLocalLaundryRoomOption.changeOption(option: "여자 기숙사측");
+                      }
+                    },
+                    child: const LaundryRoomSelectRadioButton(
+                      option: "여자 기숙사측",
                     ),
                   ),
                 ],

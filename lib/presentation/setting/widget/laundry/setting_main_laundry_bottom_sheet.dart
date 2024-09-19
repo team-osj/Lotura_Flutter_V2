@@ -99,6 +99,15 @@ class SettingMainLaundryBottomSheet extends ConsumerWidget {
               },
               child: const SettingLaundryLocateWidget(option: "남자 기숙사측"),
             ),
+            GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: () {
+                if (getLaundryRoomOption.option != "여자 기숙사측") {
+                  updateLaundryOption.execute(LaundryRoomOption.female);
+                }
+              },
+              child: const SettingLaundryLocateWidget(option: "여자 기숙사측"),
+            ),
             const SizedBox(height: 20),
           ],
         ),
