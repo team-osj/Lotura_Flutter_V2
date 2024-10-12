@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:lotura_v2/core/di/lotura_router.dart';
+import 'package:lotura_v2/core/hive/laundry_room_option.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+  /// Hive 어댑터 등록
+  Hive.registerAdapter(LaundryRoomOptionAdapter());
   runApp(
     const ProviderScope(
       child: MyApp(),
