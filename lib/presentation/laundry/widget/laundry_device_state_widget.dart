@@ -6,11 +6,13 @@ import 'package:lotura_v2/core/provider/state/device/device_state.dart';
 import 'package:lotura_v2/core/provider/state/device/device_type.dart';
 
 class LaundryDeviceStateWidget extends StatelessWidget {
+  final int id;
   final DeviceType type;
   final DeviceState state;
 
   const LaundryDeviceStateWidget({
     super.key,
+    required this.id,
     required this.type,
     required this.state,
   });
@@ -37,12 +39,12 @@ class LaundryDeviceStateWidget extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: deviceColor[state]!.elementAt(0),
+          color: DeviceState.available.color,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: type == DeviceType.dryer ? 16.5 : 55.5,
+            horizontal: type.padding,
             vertical: 8,
           ),
           child: Column(
@@ -50,19 +52,19 @@ class LaundryDeviceStateWidget extends StatelessWidget {
               SvgPicture.asset(
                 "$iconLaundryAsset/${type.name}_icon.svg",
                 colorFilter: ColorFilter.mode(
-                  deviceColor[state]!.elementAt(1),
+                  DeviceState.available.iconColor,
                   BlendMode.srcIn,
                 ),
               ),
               const SizedBox(height: 8),
               Text(
-                "33번",
+                "$id번",
                 style: LoturaTextStyle.subTitle3(
                   color: LoturaColor.black,
                 ),
               ),
               Text(
-                "세탁기",
+                type.text,
                 style: LoturaTextStyle.body1(
                   color: LoturaColor.black,
                 ),
