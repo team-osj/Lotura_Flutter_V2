@@ -3,35 +3,35 @@ import 'package:flutter/material.dart';
 class LoturaColor {
   LoturaColor._();
 
-  static Color white = const Color(0xFFFFFFFF);
-  static Color black = const Color(0xFF000000);
-  static Color transparent = const Color(0x00000000);
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color black = Color(0xFF000000);
+  static const Color transparent = Color(0x00000000);
 
-  static Color main50 = const Color(0xFFF3FAFF);
-  static Color main100 = const Color(0xFFB3DFFF);
-  static Color main200 = const Color(0xFF80CAFF);
-  static Color main300 = const Color(0xFF4DB4FF);
-  static Color main400 = const Color(0xFF26A4FF);
-  static Color main500 = const Color(0xFF0094FF);
-  static Color main600 = const Color(0xFF008CFF);
-  static Color main700 = const Color(0xFF0081FF);
-  static Color main800 = const Color(0xFF0077FF);
-  static Color main900 = const Color(0xFF0065FF);
+  static const Color main50 = Color(0xFFF3FAFF);
+  static const Color main100 = Color(0xFFB3DFFF);
+  static const Color main200 = Color(0xFF80CAFF);
+  static const Color main300 = Color(0xFF4DB4FF);
+  static const Color main400 = Color(0xFF26A4FF);
+  static const Color main500 = Color(0xFF0094FF);
+  static const Color main600 = Color(0xFF008CFF);
+  static const Color main700 = Color(0xFF0081FF);
+  static const Color main800 = Color(0xFF0077FF);
+  static const Color main900 = Color(0xFF0065FF);
 
-  static Color gray50 = const Color(0xFFFBFBFC);
-  static Color gray100 = const Color(0xFFDDDCDD);
-  static Color gray200 = const Color(0xFFC6C5C7);
-  static Color gray300 = const Color(0xFFAFADB1);
-  static Color gray400 = const Color(0xFF9D9CA0);
-  static Color gray500 = const Color(0xFF8C8A8F);
-  static Color gray600 = const Color(0xFF848287);
-  static Color gray700 = const Color(0xFF79777C);
-  static Color gray800 = const Color(0xFF6F6D72);
-  static Color gray900 = const Color(0xFF5C5A60);
+  static const Color gray50 = Color(0xFFFBFBFC);
+  static const Color gray100 = Color(0xFFDDDCDD);
+  static const Color gray200 = Color(0xFFC6C5C7);
+  static const Color gray300 = Color(0xFFAFADB1);
+  static const Color gray400 = Color(0xFF9D9CA0);
+  static const Color gray500 = Color(0xFF8C8A8F);
+  static const Color gray600 = Color(0xFF848287);
+  static const Color gray700 = Color(0xFF79777C);
+  static const Color gray800 = Color(0xFF6F6D72);
+  static const Color gray900 = Color(0xFF5C5A60);
 
-  static Color green10 = const Color(0xFFF1FFF1);
-  static Color green20 = const Color(0xFF62AE55);
+  static const Color green10 = Color(0xFFF1FFF1);
+  static const Color green20 = Color(0xFF62AE55);
 
-  static Color red10 = const Color(0xFFFFF7F7);
-  static Color red20 = const Color(0xFFFF3B32);
+  static const Color red10 = Color(0xFFFFF7F7);
+  static const Color red20 = Color(0xFFFF3B32);
 }
