@@ -3,8 +3,8 @@ description: "A new Flutter project."
 
 publish_to: 'none'
 
-# 메인 세탁실 설정 리팩토링, 로컬 세탁실 설정 기능 추가
-version: 2.2.1+8
+# 세탁실 스크린 장치 위젯 배치(퍼블리싱)
+version: 2.3.0+9
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
