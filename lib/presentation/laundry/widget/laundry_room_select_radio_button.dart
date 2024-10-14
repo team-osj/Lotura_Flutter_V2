@@ -10,7 +10,7 @@ class LaundryRoomSelectRadioButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final localLaundryRoomOption = ref.watch(localLaundryRoomOptionProvider);
+    final localLaundryRoomOption = ref.watch(localLaundryRoomOptionViewModelProvider).option;
     return Container(
       height: 35,
       alignment: Alignment.center,
@@ -23,7 +23,8 @@ class LaundryRoomSelectRadioButton extends ConsumerWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Text(
-          option,
+          /// 현재 사용된 radio의 value가 "여자 기숙사측" 일 경우 버튼 텍스트를 "여자"로 변경
+          option == "여자 기숙사측" ? "여자" : option,
           style: LoturaTextStyle.button1(
             color: localLaundryRoomOption == option
                 ? LoturaColor.white

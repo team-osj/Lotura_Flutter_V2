@@ -1,4 +1,4 @@
-import 'package:lotura_v2/core/provider/state/laundry/laundry_room_option.dart';
+import 'package:lotura_v2/core/hive/laundry_room_option.dart';
 import 'package:lotura_v2/domain/repository/laundry/laundry_repository.dart';
 
 class GetLaundryRoomOptionUseCase {
@@ -9,5 +9,5 @@ class GetLaundryRoomOptionUseCase {
   }) : _laundryRepository = laundryRepository;
 
   Future<LaundryRoomOption?> execute() async =>
-      await _laundryRepository.getRoomOption(key: "laundryRoomOption");
+      await _laundryRepository.getRoomOption();
 }

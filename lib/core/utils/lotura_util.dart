@@ -7,9 +7,10 @@ class LoturaUtil {
   static void loturaToast({
     required BuildContext context,
     required String text,
+    required LoturaToastType type,
   }) async {
     OverlayEntry overlay = OverlayEntry(
-      builder: (_) => LoturaToastWidget(text: text),
+      builder: (_) => LoturaToastWidget(text: text, type: type),
     );
 
     Navigator.of(context).overlay!.insert(overlay);

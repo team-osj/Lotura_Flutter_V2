@@ -1,31 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lotura_v2/core/constants/lotura_asset.dart';
-import 'package:lotura_v2/core/layout/lotura_layout.dart';
+import 'package:lotura_v2/core/constants/lotura_style.dart';
+import 'package:lotura_v2/presentation/setting/provider/laundry/get_laundry_room_option_view_model_provider.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  ConsumerState<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 1)).then((value) {
-      context.go("/main");
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      /// splash 화면에서 메인 세탁실 설정을 불러옴
+      ref.read(getLaundryRoomOptionViewModelProvider.notifier).execute();
+      Future.delayed(const Duration(milliseconds: 1100)).then((value) => context.go("/"));
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return LoturaLayout(
-      child: Center(
-        child: SvgPicture.asset(
-          "$iconCoreAsset/o_icon.svg",
+    return Scaffold(
+      backgroundColor: LoturaColor.white,
+      body: Center(
+        child: Image.asset(
+          "$imageCoreAsset/lotura_splash_image.png",
+          width: 280,
+          height: 280,
         ),
       ),
     );

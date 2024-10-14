@@ -6,18 +6,18 @@ import 'package:lotura_v2/presentation/setting/view/setting_screen.dart';
 import 'package:lotura_v2/presentation/splash/view/splash_screen.dart';
 
 final GoRouter loturaRouter = GoRouter(
-  initialLocation: "/",
+  initialLocation: "/splash",
   routes: [
     GoRoute(
       path: "/",
       builder: (context, state) {
-        return const SplashScreen();
+        return const MainScreen();
       },
     ),
     GoRoute(
-      path: "/main",
+      path: "/splash",
       builder: (context, state) {
-        return const MainScreen();
+        return const SplashScreen();
       },
     ),
     GoRoute(
