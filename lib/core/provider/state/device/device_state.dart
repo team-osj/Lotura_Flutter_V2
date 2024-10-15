@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 
 enum DeviceState {
-  /// 사용 가능
-  available(
-    color: LoturaColor.green10,
-    iconColor: LoturaColor.green20,
-    text: "사용 가능",
-  ),
-
   /// 작동중
   working(
     color: LoturaColor.main50,
     iconColor: LoturaColor.main500,
     text: "작동중",
+  ),
+
+  /// 사용 가능
+  available(
+    color: LoturaColor.green10,
+    iconColor: LoturaColor.green20,
+    text: "사용 가능",
   ),
 
   /// 연결 끊김

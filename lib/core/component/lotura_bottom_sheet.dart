@@ -33,9 +33,9 @@ class _LoturaBottomSheetState extends State<LoturaBottomSheet> {
     return GestureDetector(
       child: Container(
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: LoturaColor.white,
-          borderRadius: const BorderRadius.only(
+          borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
           ),
@@ -57,7 +57,7 @@ class _LoturaBottomSheetState extends State<LoturaBottomSheet> {
               ),
               const SizedBox(height: 20),
               Text(
-                deviceComment[widget.state]!.elementAt(0),
+                "",//deviceComment[widget.state]!.elementAt(0),
                 style: LoturaTextStyle.heading4(
                   color: LoturaColor.black,
                 ),
@@ -80,7 +80,7 @@ class _LoturaBottomSheetState extends State<LoturaBottomSheet> {
                       child: GestureDetector(
                         behavior: HitTestBehavior.translucent,
                         onTap: () => context.pop("/"),
-                        child: LoturaButton(
+                        child: const LoturaButton(
                           text: "취소",
                           textColor: LoturaColor.black,
                           backgroundColor: LoturaColor.gray50,

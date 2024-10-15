@@ -2,7 +2,7 @@ import 'package:lotura_v2/core/provider/state/device/device_array_type.dart';
 
 List<Map<DeviceArrayType, List<int>>> maleSchoolLocateDummy = [
   {
-    DeviceArrayType.onlyDryer: [39, 1, 9, 41]
+    DeviceArrayType.onlyDryer: [33, 1, 9, 41]
   },
   {
     DeviceArrayType.onlyWasher: [2, 10]

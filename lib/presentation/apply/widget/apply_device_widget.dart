@@ -48,22 +48,22 @@ class ApplyDeviceWidget extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             switch (state) {
-              DeviceState.available => ApplyDeviceStateWidget(
+              DeviceState.available => const ApplyDeviceStateWidget(
                   state: "사용 가능",
                   color: LoturaColor.green20,
                   backgroundColor: LoturaColor.green10,
                 ),
-              DeviceState.working => ApplyDeviceStateWidget(
+              DeviceState.working => const ApplyDeviceStateWidget(
                   state: "작동중",
                   color: LoturaColor.main900,
                   backgroundColor: LoturaColor.main50,
                 ),
-              DeviceState.disconnect => ApplyDeviceStateWidget(
+              DeviceState.disconnect => const ApplyDeviceStateWidget(
                   state: "연결 끊김",
                   color: LoturaColor.gray600,
                   backgroundColor: LoturaColor.gray100,
                 ),
-              DeviceState.breakdown => ApplyDeviceStateWidget(
+              DeviceState.breakdown => const ApplyDeviceStateWidget(
                   state: "고장",
                   color: LoturaColor.red20,
                   backgroundColor: LoturaColor.red10,

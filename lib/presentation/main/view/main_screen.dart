@@ -49,7 +49,7 @@ class _MainScreenState extends ConsumerState<MainScreen>
       appBar: const MainAppBar(),
       child: TabBarView(
         controller: controller,
-        children: [
+        children: const [
           ApplyScreen(),
           LaundryScreen(),
         ],
