@@ -11,9 +11,9 @@ class SettingAlarmBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: LoturaColor.white,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
         ),
@@ -47,10 +47,10 @@ class SettingAlarmBottomSheet extends StatelessWidget {
                 color: LoturaColor.gray700,
               ),
             ),
-            SizedBox(height: 20),
-            SettingAlarmSwitch(option: "세탁기", value: false),
-            SettingAlarmSwitch(option: "건조기", value: true),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
+            const SettingAlarmSwitch(option: "세탁기", value: false),
+            const SettingAlarmSwitch(option: "건조기", value: true),
+            const SizedBox(height: 20),
           ],
         ),
       ),

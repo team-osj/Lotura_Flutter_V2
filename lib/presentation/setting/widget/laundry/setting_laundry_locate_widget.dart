@@ -32,7 +32,7 @@ class SettingLaundryLocateWidget extends ConsumerWidget {
           if (getLaundryRoomOptionState.option == option && updateLaundryRoomOptionState != UpdateLaundryRoomOptionState.loading)
             SvgPicture.asset("$iconSettingAsset/check_icon.svg"),
           if (updateLaundryRoomOptionState == UpdateLaundryRoomOptionState.loading)
-            CupertinoActivityIndicator(color: LoturaColor.gray200),
+            const CupertinoActivityIndicator(color: LoturaColor.gray200),
         ],
       ),
     );
