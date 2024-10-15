@@ -4,7 +4,7 @@ description: "A new Flutter project."
 publish_to: 'none'
 
 # 세탁실 스크린 장치 위젯 배치(퍼블리싱)
-version: 2.3.0+9
+version: 2.4.0+10
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
