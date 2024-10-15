@@ -3,7 +3,7 @@ description: "A new Flutter project."
 
 publish_to: 'none'
 
-# 세탁실 스크린 장치 위젯 배치(퍼블리싱)
+# 세탁실 현황의 데이터를 실시간으로 송수신하는 서버 소켓과 구현 및 연결
 version: 2.4.0+10
 
 environment:
