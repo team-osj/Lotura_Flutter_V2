@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
+import 'package:lotura_v2/presentation/laundry/provider/get_stream_laundry_view_model_provider.dart';
 import 'package:lotura_v2/presentation/setting/provider/laundry/get_laundry_room_option_view_model_provider.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
@@ -18,6 +19,9 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       /// splash 화면에서 메인 세탁실 설정을 불러옴
       ref.read(getLaundryRoomOptionViewModelProvider.notifier).execute();
+      /// 앱이 빌드될 떄 서버 소켓과 연결
+      ref.read(getStreamLaundryViewModelProvider.notifier).getLaundryEvent();
+      ref.read(getStreamLaundryViewModelProvider.notifier).getAllLaundryList();
       Future.delayed(const Duration(milliseconds: 1100)).then((value) => context.go("/"));
     });
   }
