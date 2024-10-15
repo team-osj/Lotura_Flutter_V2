@@ -39,7 +39,7 @@ class LaundryDeviceStateWidget extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: DeviceState.available.color,
+          color: state.color,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Padding(
@@ -52,7 +52,7 @@ class LaundryDeviceStateWidget extends StatelessWidget {
               SvgPicture.asset(
                 "$iconLaundryAsset/${type.name}_icon.svg",
                 colorFilter: ColorFilter.mode(
-                  DeviceState.available.iconColor,
+                  state.iconColor,
                   BlendMode.srcIn,
                 ),
               ),

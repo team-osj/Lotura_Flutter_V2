@@ -1,9 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 import 'package:lotura_v2/core/dummy/laundry_room_locate_dummy.dart';
 import 'package:lotura_v2/core/layout/lotura_layout.dart';
+import 'package:lotura_v2/presentation/laundry/provider/get_stream_laundry_view_model_provider.dart';
 import 'package:lotura_v2/presentation/laundry/provider/local_laundry_room_option_provider.dart';
+import 'package:lotura_v2/presentation/laundry/provider/model/laundry_state_model.dart';
+import 'package:lotura_v2/presentation/laundry/provider/state/get_stream_laundry_state.dart';
 import 'package:lotura_v2/presentation/laundry/widget/laundry_device_array_widget.dart';
 import 'package:lotura_v2/presentation/laundry/widget/laundry_room_select_radio_button.dart';
 
@@ -31,9 +35,13 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final localLaundryRoomOption = ref.watch(localLaundryRoomOptionViewModelProvider).option;
-    final localLaundryRoomLocate = ref.watch(localLaundryRoomOptionViewModelProvider).locate;
-    final updateLocalLaundryRoomOption = ref.read(localLaundryRoomOptionViewModelProvider.notifier);
+    final localLaundryRoomOption =
+        ref.watch(localLaundryRoomOptionViewModelProvider).option;
+    final localLaundryRoomLocate =
+        ref.watch(localLaundryRoomOptionViewModelProvider).locate;
+    final laundryState = ref.watch(getStreamLaundryViewModelProvider).state;
+    final updateLocalLaundryRoomOption =
+        ref.read(localLaundryRoomOptionViewModelProvider.notifier);
     return LoturaLayout(
       child: SingleChildScrollView(
         child: Padding(
@@ -100,26 +108,30 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
                 ),
               ),
               const SizedBox(height: 24),
-              ListView.builder(
-                controller: _scrollController,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: localLaundryRoomLocate!.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.only(
-                      bottom: index == localLaundryRoomLocate.length - 1
-                          ? 24
-                          : 10,
-                    ),
-                    child: LaundryDeviceArrayWidget(
-                      type: localLaundryRoomLocate.elementAt(index).keys.single,
-                      locate: maleDormitoryLocateDummy,
-                      item: localLaundryRoomLocate.elementAt(index).values.single,
-                    ),
-                  );
-                },
-              ),
+              switch (laundryState) {
+                GetStreamLaundryState.success => ListView.builder(
+                    controller: _scrollController,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: localLaundryRoomLocate!.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(
+                          bottom: index == localLaundryRoomLocate.length - 1
+                              ? 24
+                              : 10,
+                        ),
+                        child: LaundryDeviceArrayWidget(
+                          type: localLaundryRoomLocate.elementAt(index).keys.single,
+                          item: localLaundryRoomLocate.elementAt(index).values.single,
+                        ),
+                      );
+                    },
+                  ),
+                GetStreamLaundryState.failure => const Text("인터넷 연결을 확인해주세요."),
+                GetStreamLaundryState.initial => const Center(child: CupertinoActivityIndicator()),
+                GetStreamLaundryState.loading => const Center(child: CupertinoActivityIndicator()),
+              }
             ],
           ),
         ),
