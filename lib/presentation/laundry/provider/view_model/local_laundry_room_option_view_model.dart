@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lotura_v2/core/dummy/laundry_room_locate_dummy.dart';
 import 'package:lotura_v2/core/provider/state/device/device_array_type.dart';
 import 'package:lotura_v2/domain/entity/laundry/laundry_room_option_entity.dart';
 import 'package:lotura_v2/presentation/laundry/provider/state/local_laundry_room_option_state.dart';
