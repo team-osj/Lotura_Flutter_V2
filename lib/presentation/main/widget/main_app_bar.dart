@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lotura_v2/core/constants/lotura_asset.dart';
 import 'package:lotura_v2/core/constants/lotura_color.dart';
 import 'package:lotura_v2/presentation/main/widget/view_option/main_view_option_switch.dart';
+import 'package:lotura_v2/presentation/notice/provider/get_notice_option_view_model_provider.dart';
+import 'package:lotura_v2/presentation/notice/provider/get_notice_view_model_provider.dart';
 
-class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
+class MainAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const MainAppBar({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final readNoticeList = ref.watch(getNoticeOptionViewModelProvider);
+    final noticeList = ref.watch(getNoticeViewModelProvider);
     return SafeArea(
       child: PreferredSize(
         preferredSize: preferredSize,
@@ -33,12 +38,15 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
                   children: [
                     GestureDetector(
                       onTap: () => context.push("/notice"),
-                      child: SvgPicture.asset("$iconCoreAsset/bell_icon.svg"),
+                      child: SvgPicture.asset(
+                        "$iconCoreAsset/${readNoticeList.values.length != noticeList.values.length ? "unread_" : ""}bell_icon.svg",
+                      ),
                     ),
                     const SizedBox(width: 12),
                     GestureDetector(
                       onTap: () => context.push("/setting"),
-                      child: SvgPicture.asset("$iconCoreAsset/setting_icon.svg"),
+                      child:
+                          SvgPicture.asset("$iconCoreAsset/setting_icon.svg"),
                     ),
                   ],
                 )
