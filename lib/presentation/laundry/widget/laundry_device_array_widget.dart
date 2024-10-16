@@ -7,7 +7,6 @@ import 'package:lotura_v2/core/provider/state/device/device_state.dart';
 import 'package:lotura_v2/core/provider/state/device/device_type.dart';
 import 'package:lotura_v2/domain/entity/laundry/laundry_entity.dart';
 import 'package:lotura_v2/presentation/laundry/provider/get_stream_laundry_view_model_provider.dart';
-import 'package:lotura_v2/presentation/laundry/provider/model/laundry_state_model.dart';
 import 'package:lotura_v2/presentation/laundry/widget/laundry_device_state_widget.dart';
 import 'package:lotura_v2/presentation/laundry/widget/laundry_dryer_array_widget.dart';
 import 'package:lotura_v2/presentation/laundry/widget/laundry_empty_widget.dart';

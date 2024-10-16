@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lotura_v2/core/component/lotura_scroll_widget.dart';
 import 'package:lotura_v2/core/constants/lotura_color.dart';
 import 'package:lotura_v2/core/constants/lotura_text_style.dart';
 import 'package:lotura_v2/core/layout/lotura_layout.dart';
@@ -14,7 +15,7 @@ class _ApplyScreenState extends State<ApplyScreen> {
   @override
   Widget build(BuildContext context) {
     return LoturaLayout(
-      child: SingleChildScrollView(
+      child: LoturaScrollWidget(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
