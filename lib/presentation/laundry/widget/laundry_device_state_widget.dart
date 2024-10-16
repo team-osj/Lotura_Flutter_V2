@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lotura_v2/core/component/lotura_bottom_sheet.dart';
+import 'package:lotura_v2/core/component/laundry_bottom_sheet.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 import 'package:lotura_v2/core/provider/state/device/device_state.dart';
 import 'package:lotura_v2/core/provider/state/device/device_type.dart';
@@ -27,11 +27,11 @@ class LaundryDeviceStateWidget extends StatelessWidget {
           backgroundColor: LoturaColor.white,
           builder: (context) {
             return SafeArea(
-              child: LoturaBottomSheet(
+              child: LaundryBottomSheet(
                 state: state,
                 type: type,
                 actionFunc: () {},
-                count: 1,
+                id: id,
               ),
             );
           },
