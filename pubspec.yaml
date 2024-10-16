@@ -3,8 +3,8 @@ description: "A new Flutter project."
 
 publish_to: 'none'
 
-# 세탁실 현황의 데이터를 실시간으로 송수신하는 서버 소켓과 구현 및 연결
-version: 2.4.0+10
+# 공지사항 구현 및 공지사항 확인 여부를 파악하여 사용자 경험 업그레이드
+version: 2.5.0+11
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -22,6 +22,7 @@ dependencies:
   url_launcher: ^6.3.0
   web_socket_channel: ^3.0.1
   dio: ^5.7.0
+  flutter_markdown: ^0.7.4
 
 
 dev_dependencies:

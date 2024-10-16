@@ -29,7 +29,7 @@ final GoRouter loturaRouter = GoRouter(
     GoRoute(
       path: "/noticeDetail",
       builder: (context, state) {
-        return const NoticeDetailScreen();
+        return NoticeDetailScreen(index: state.extra as int);
       },
     ),
     GoRoute(

@@ -1,79 +1,131 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lotura_v2/core/component/lotura_app_bar.dart';
+import 'package:lotura_v2/core/component/lotura_scroll_widget.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 import 'package:lotura_v2/core/layout/lotura_layout.dart';
+import 'package:lotura_v2/core/layout/lotura_loading_layout.dart';
+import 'package:lotura_v2/core/layout/lotura_network_error_layout.dart';
+import 'package:lotura_v2/presentation/notice/provider/get_notice_option_view_model_provider.dart';
+import 'package:lotura_v2/presentation/notice/provider/get_notice_view_model_provider.dart';
+import 'package:lotura_v2/presentation/notice/provider/state/get_notice_state.dart';
 
-class NoticeMainScreen extends StatefulWidget {
+class NoticeMainScreen extends ConsumerStatefulWidget {
   const NoticeMainScreen({super.key});
 
   @override
-  State<NoticeMainScreen> createState() => _NoticeMainScreenState();
+  ConsumerState<NoticeMainScreen> createState() => _NoticeMainScreenState();
 }
 
-class _NoticeMainScreenState extends State<NoticeMainScreen> {
+class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(getNoticeViewModelProvider.notifier).execute();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return LoturaLayout(
-      appBar: const LoturaAppBar(popRoute: "/", title: "공지사항"),
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 8),
-              Image.asset(
-                "$imageNoticeAsset/notice_banner_image.png",
-              ),
-              const SizedBox(height: 12),
-              ListView.builder(
-                /// item list의 크기만큼 ListView 크기 지정
-                shrinkWrap: true,
+    final readNoticeList = ref.watch(getNoticeOptionViewModelProvider).values;
+    final noticeList = ref.watch(getNoticeViewModelProvider).values;
+    final noticeState = ref.watch(getNoticeViewModelProvider).state;
+    PreferredSizeWidget appBar =
+        const LoturaAppBar(popRoute: "/", title: "공지사항");
+    return switch (noticeState) {
+      GetNoticeState.initial => LoturaLoadingLayout(appBar: appBar),
+      GetNoticeState.loading => LoturaLoadingLayout(appBar: appBar),
+      GetNoticeState.failure => LoturaNetworkErrorLayout(appBar: appBar),
+      GetNoticeState.success => LoturaLayout(
+          appBar: appBar,
+          child: LoturaScrollWidget(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 8),
+                  Image.asset(
+                    "$imageNoticeAsset/notice_banner_image.png",
+                  ),
+                  const SizedBox(height: 12),
+                  ListView.builder(
+                    /// item list의 크기만큼 ListView 크기 지정
+                    shrinkWrap: true,
 
-                /// 스크롤 이벤트 x
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: 100,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    behavior: HitTestBehavior.translucent,
-                    onTap: () => context.push("/noticeDetail"),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SvgPicture.asset("$iconNoticeAsset/comment_icon.svg"),
-                          const SizedBox(width: 24),
-                          Column(
+                    /// 스크롤 이벤트 x
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: noticeList.length,
+                    itemBuilder: (context, index) {
+                      final isRead = readNoticeList
+                          .contains(noticeList.elementAt(index).id);
+                      return GestureDetector(
+                        behavior: HitTestBehavior.translucent,
+                        onTap: () =>
+                            context.push("/noticeDetail", extra: index),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                "OSJ 사용 안내",
-                                style: LoturaTextStyle.subTitle2(
-                                  color: LoturaColor.black,
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                "1일전",
-                                style: LoturaTextStyle.label(
-                                  color: LoturaColor.gray600,
+                              SvgPicture.asset(
+                                  "$iconNoticeAsset/comment_icon.svg"),
+                              const SizedBox(width: 24),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      noticeList.elementAt(index).title,
+                                      style: LoturaTextStyle.subTitle2(
+                                        color: LoturaColor.black,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          noticeList
+                                              .elementAt(index)
+                                              .date
+                                              .split(" ")[0],
+                                          style: LoturaTextStyle.label(
+                                            color: LoturaColor.gray600,
+                                          ),
+                                        ),
+                                        const SizedBox(width: 10),
+                                        isRead ? Text(
+                                                "읽음",
+                                                style: LoturaTextStyle.body3(
+                                                  color: LoturaColor.gray500,
+                                                ),
+                                              )
+                                            : Text(
+                                                "안 읽음",
+                                                style: LoturaTextStyle.body3(
+                                                  color: LoturaColor.main500,
+                                                ),
+                                              ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
-                          )
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              )
-            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
-      ),
-    );
+    };
   }
 }
