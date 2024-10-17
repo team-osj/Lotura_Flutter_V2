@@ -3,6 +3,9 @@ import 'package:lotura_v2/core/component/lotura_scroll_widget.dart';
 import 'package:lotura_v2/core/constants/lotura_color.dart';
 import 'package:lotura_v2/core/constants/lotura_text_style.dart';
 import 'package:lotura_v2/core/layout/lotura_layout.dart';
+import 'package:lotura_v2/core/provider/state/device/device_state.dart';
+import 'package:lotura_v2/core/provider/state/device/device_type.dart';
+import 'package:lotura_v2/presentation/apply/widget/apply_device_widget.dart';
 
 class ApplyScreen extends StatefulWidget {
   const ApplyScreen({super.key});
@@ -36,20 +39,24 @@ class _ApplyScreenState extends State<ApplyScreen> {
                 ),
               ),
               const SizedBox(height: 28),
-              // GridView.builder(
-              //   shrinkWrap: true,
-              //   physics: NeverScrollableScrollPhysics(),
-              //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              //     crossAxisCount: 3,
-              //   ),
-              //   itemBuilder: (context, index) {
-              //     return ApplyDeviceWidget(
-              //       number: 1,
-              //       type: DeviceType.dryer,
-              //       state: DeviceState.working,
-              //     );
-              //   },
-              // ),
+              GridView.builder(
+                shrinkWrap: true,
+                itemCount: 10,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 14,
+                  mainAxisSpacing: 14,
+                  childAspectRatio: 164 / 232
+                ),
+                itemBuilder: (context, index) {
+                  return ApplyDeviceWidget(
+                    id: 1,
+                    type: DeviceType.dryer,
+                    state: DeviceState.available,
+                  );
+                },
+              ),
             ],
           ),
         ),
