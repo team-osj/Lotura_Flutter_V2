@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
-import 'package:lotura_v2/presentation/setting/provider/laundry/get_laundry_room_option_view_model_provider.dart';
-import 'package:lotura_v2/presentation/setting/widget/laundry/setting_main_laundry_bottom_sheet.dart';
 
-class SettingMainLaundryWidget extends ConsumerWidget {
-  const SettingMainLaundryWidget({super.key});
+class SettingOptionWidget extends StatelessWidget {
+  final Widget bottomSheet;
+  final String title;
+  final String? option;
+
+  const SettingOptionWidget({
+    super.key,
+    required this.bottomSheet,
+    required this.title,
+    this.option,
+  });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final laundryOptionState = ref.watch(getLaundryRoomOptionViewModelProvider);
+  Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () => showModalBottomSheet(
         context: context,
         backgroundColor: LoturaColor.white,
         builder: (context) {
-          return const SafeArea(
-            child: SettingMainLaundryBottomSheet(),
+          return SafeArea(
+            child: bottomSheet,
           );
         },
       ),
@@ -28,7 +33,7 @@ class SettingMainLaundryWidget extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "메인 세탁실 설정",
+              title,
               style: LoturaTextStyle.subTitle2(
                 color: LoturaColor.black,
               ),
@@ -36,7 +41,7 @@ class SettingMainLaundryWidget extends ConsumerWidget {
             Row(
               children: [
                 Text(
-                  laundryOptionState.option.toString(),
+                  option ?? "",
                   style: LoturaTextStyle.subTitle2(
                     color: LoturaColor.main500,
                   ),
