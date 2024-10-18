@@ -15,10 +15,25 @@ class ApplyScreen extends StatefulWidget {
 }
 
 class _ApplyScreenState extends State<ApplyScreen> {
+  late ScrollController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return LoturaLayout(
       child: LoturaScrollWidget(
+        controller: controller,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
@@ -50,7 +65,7 @@ class _ApplyScreenState extends State<ApplyScreen> {
                   childAspectRatio: 164 / 232
                 ),
                 itemBuilder: (context, index) {
-                  return ApplyDeviceWidget(
+                  return const ApplyDeviceWidget(
                     id: 1,
                     type: DeviceType.dryer,
                     state: DeviceState.available,

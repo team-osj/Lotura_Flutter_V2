@@ -20,12 +20,21 @@ class NoticeMainScreen extends ConsumerStatefulWidget {
 }
 
 class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
+  late ScrollController controller;
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(getNoticeViewModelProvider.notifier).execute();
     });
+    controller = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -42,6 +51,7 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
       GetNoticeState.success => LoturaLayout(
           appBar: appBar,
           child: LoturaScrollWidget(
+            controller: controller,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(
@@ -98,7 +108,8 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
                                           ),
                                         ),
                                         const SizedBox(width: 10),
-                                        isRead ? Text(
+                                        isRead
+                                            ? Text(
                                                 "읽음",
                                                 style: LoturaTextStyle.body3(
                                                   color: LoturaColor.gray500,

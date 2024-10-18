@@ -26,6 +26,7 @@ class NoticeDetailScreen extends ConsumerStatefulWidget {
 }
 
 class _NoticeDetailScreenState extends ConsumerState<NoticeDetailScreen> {
+  late ScrollController controller;
 
   @override
   void initState() {
@@ -39,7 +40,15 @@ class _NoticeDetailScreenState extends ConsumerState<NoticeDetailScreen> {
         ref.read(getNoticeOptionViewModelProvider.notifier).execute();
       }
     });
+    controller = ScrollController();
   }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +62,7 @@ class _NoticeDetailScreenState extends ConsumerState<NoticeDetailScreen> {
       GetNoticeState.success => LoturaLayout(
           appBar: appBar,
           child: LoturaScrollWidget(
+            controller: controller,
             child: Padding(
               padding: const EdgeInsets.all(24),
               child: Column(

@@ -10,20 +10,46 @@ import 'package:lotura_v2/presentation/laundry/provider/state/get_stream_laundry
 import 'package:lotura_v2/presentation/laundry/widget/laundry_device_array_widget.dart';
 import 'package:lotura_v2/presentation/laundry/widget/laundry_room_select_radio_button.dart';
 
-class LaundryScreen extends ConsumerWidget {
+class LaundryScreen extends ConsumerStatefulWidget {
   const LaundryScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<LaundryScreen> createState() => _LaundryScreenState();
+}
+
+class _LaundryScreenState extends ConsumerState<LaundryScreen> {
+  late ScrollController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final localLaundryRoomOption =
-        ref.watch(localLaundryRoomOptionViewModelProvider).option;
+        ref
+            .watch(localLaundryRoomOptionViewModelProvider)
+            .option;
     final localLaundryRoomLocate =
-        ref.watch(localLaundryRoomOptionViewModelProvider).locate;
-    final laundryState = ref.watch(getStreamLaundryViewModelProvider).state;
+        ref
+            .watch(localLaundryRoomOptionViewModelProvider)
+            .locate;
+    final laundryState = ref
+        .watch(getStreamLaundryViewModelProvider)
+        .state;
     final updateLocalLaundryRoomOption =
-        ref.read(localLaundryRoomOptionViewModelProvider.notifier);
+    ref.read(localLaundryRoomOptionViewModelProvider.notifier);
     return LoturaLayout(
       child: LoturaScrollWidget(
+        controller: controller,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
@@ -89,35 +115,36 @@ class LaundryScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 24),
               switch (laundryState) {
-                GetStreamLaundryState.success => ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: localLaundryRoomLocate!.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.only(
-                          bottom: index == localLaundryRoomLocate.length - 1
-                              ? 24
-                              : 10,
-                        ),
-                        child: LaundryDeviceArrayWidget(
-                          type: localLaundryRoomLocate
-                              .elementAt(index)
-                              .keys
-                              .single,
-                          item: localLaundryRoomLocate
-                              .elementAt(index)
-                              .values
-                              .single,
-                        ),
-                      );
-                    },
-                  ),
+                GetStreamLaundryState.success =>
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: localLaundryRoomLocate!.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: EdgeInsets.only(
+                            bottom: index == localLaundryRoomLocate.length - 1
+                                ? 24
+                                : 10,
+                          ),
+                          child: LaundryDeviceArrayWidget(
+                            type: localLaundryRoomLocate
+                                .elementAt(index)
+                                .keys
+                                .single,
+                            item: localLaundryRoomLocate
+                                .elementAt(index)
+                                .values
+                                .single,
+                          ),
+                        );
+                      },
+                    ),
                 GetStreamLaundryState.failure => const Text("인터넷 연결을 확인해주세요."),
                 GetStreamLaundryState.initial =>
-                  const Center(child: CupertinoActivityIndicator()),
+                const Center(child: CupertinoActivityIndicator()),
                 GetStreamLaundryState.loading =>
-                  const Center(child: CupertinoActivityIndicator()),
+                const Center(child: CupertinoActivityIndicator()),
               }
             ],
           ),
