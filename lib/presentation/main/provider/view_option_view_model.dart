@@ -9,12 +9,17 @@ class ViewOptionViewModel extends StateNotifier<int> {
   final PageController controller = PageController(initialPage: 1);
 
   void changeOption({required int index}) {
-    controller.jumpToPage(index);
-    state = index;
+    controller.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.linearToEaseOut,
+    ).then((_) {
+      state = index;
+    });
   }
 
   void _onPageChanged() {
-    final currentIndex = controller.page!.round();
-    state = currentIndex;
+    final index = controller.page!.round();
+    state = index;
   }
 }
