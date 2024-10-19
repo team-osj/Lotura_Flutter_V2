@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lotura_v2/core/constants/lotura_color.dart';
-import 'package:lotura_v2/presentation/main/provider/view_option_state_provider.dart';
+import 'package:lotura_v2/presentation/main/provider/view_option_view_model_provider.dart';
 import 'package:lotura_v2/presentation/main/widget/view_option/main_view_option_button.dart';
 
 class MainViewOptionSwitch extends ConsumerStatefulWidget {
@@ -17,9 +17,9 @@ class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
   @override
   Widget build(BuildContext context) {
     /// 화면 옵션 확인
-    final viewOption = ref.watch(viewOptionStateProvider);
+    final viewOption = ref.watch(viewOptionViewModelProvider);
     /// 화면 옵션 수정
-    final changeViewOption = ref.read(viewOptionStateProvider.notifier);
+    final changeViewOption = ref.read(viewOptionViewModelProvider.notifier);
     return Row(
       children: [
         Container(
@@ -50,8 +50,8 @@ class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
                 GestureDetector(
                   onTap: () {
                     /// 이벤트 실행 시, 화면에 변화가 필요 없다면 이벤트가 실행되지 않도록 예외처리
-                    if (viewOption == 1) {
-                      changeViewOption.state = 0;
+                    if (viewOption != 0) {
+                      changeViewOption.changeOption(index: 0);
                     }
                   },
                   child: Align(
@@ -69,7 +69,7 @@ class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
                   onTap: () {
                     /// 이벤트 실행 시, 화면에 변화가 필요 없다면 이벤트가 실행되지 않도록 예외처리
                     if (viewOption == 0) {
-                      changeViewOption.state = 1;
+                      changeViewOption.changeOption(index: 1);
                     }
                   },
                   child: Align(

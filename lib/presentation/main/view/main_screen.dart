@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lotura_v2/core/layout/lotura_layout.dart';
 import 'package:lotura_v2/presentation/apply/view/apply_screen.dart';
 import 'package:lotura_v2/presentation/laundry/view/laundry_screen.dart';
+import 'package:lotura_v2/presentation/main/provider/view_option_view_model_provider.dart';
 import 'package:lotura_v2/presentation/main/widget/main_app_bar.dart';
 import 'package:lotura_v2/presentation/setting/provider/laundry/get_laundry_room_option_view_model_provider.dart';
 
@@ -15,7 +16,6 @@ class MainScreen extends ConsumerStatefulWidget {
 
 class _MainScreenState extends ConsumerState<MainScreen>
     with SingleTickerProviderStateMixin {
-  late TabController controller;
 
   @override
   void initState() {
@@ -29,25 +29,14 @@ class _MainScreenState extends ConsumerState<MainScreen>
         ref.read(getLaundryRoomOptionViewModelProvider.notifier).execute();
       }
     });
-
-    controller = TabController(
-      length: 2,
-      vsync: this,
-      initialIndex: 1,
-    );
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final controller = ref.watch(viewOptionViewModelProvider.notifier).controller;
     return LoturaLayout(
       appBar: const MainAppBar(),
-      child: TabBarView(
+      child: PageView(
         controller: controller,
         children: const [
           ApplyScreen(),
