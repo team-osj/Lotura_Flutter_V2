@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 
 class LoturaAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String popRoute;
   final String? title;
 
   const LoturaAppBar({
     super.key,
-    required this.popRoute,
     this.title,
   });
 
@@ -31,8 +30,8 @@ class LoturaAppBar extends StatelessWidget implements PreferredSizeWidget {
           /// title 위젯을 center에 배치
           centerTitle: true,
           backgroundColor: LoturaColor.white,
-          leading: GestureDetector(
-            onTap: () => context.pop(popRoute),
+          leading: LoturaGesture(
+            event: () => context.pop(),
             child: Center(
               child: SvgPicture.asset(
                 "$iconCoreAsset/left_arrow_icon.svg",
