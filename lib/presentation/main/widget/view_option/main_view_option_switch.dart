@@ -49,6 +49,7 @@ class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
                   ),
                 ),
                 LoturaGesture(
+                  behavior: HitTestBehavior.deferToChild,
                   event: () {
                     /// 이벤트 실행 시, 화면에 변화가 필요 없다면 이벤트가 실행되지 않도록 예외처리
                     if (viewOption != 0) {
@@ -67,6 +68,7 @@ class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
                   ),
                 ),
                 LoturaGesture(
+                  behavior: HitTestBehavior.deferToChild,
                   event: () {
                     /// 이벤트 실행 시, 화면에 변화가 필요 없다면 이벤트가 실행되지 않도록 예외처리
                     if (viewOption == 0) {
