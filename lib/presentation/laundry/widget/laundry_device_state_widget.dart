@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lotura_v2/core/component/laundry_bottom_sheet.dart';
+import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 import 'package:lotura_v2/core/provider/state/device/device_state.dart';
 import 'package:lotura_v2/core/provider/state/device/device_type.dart';
@@ -19,20 +20,17 @@ class LaundryDeviceStateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTap: () {
+    return LoturaGesture(
+      event: () {
         showModalBottomSheet(
           context: context,
           backgroundColor: LoturaColor.white,
           builder: (context) {
-            return SafeArea(
-              child: LaundryBottomSheet(
-                state: state,
-                type: type,
-                actionFunc: () {},
-                id: id,
-              ),
+            return LaundryBottomSheet(
+              state: state,
+              type: type,
+              actionFunc: () {},
+              id: id,
             );
           },
         );

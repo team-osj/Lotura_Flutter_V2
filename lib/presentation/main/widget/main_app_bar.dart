@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/constants/lotura_asset.dart';
 import 'package:lotura_v2/core/constants/lotura_color.dart';
 import 'package:lotura_v2/presentation/main/widget/view_option/main_view_option_switch.dart';
@@ -36,15 +37,15 @@ class MainAppBar extends ConsumerWidget implements PreferredSizeWidget {
                 const MainViewOptionSwitch(),
                 Row(
                   children: [
-                    GestureDetector(
-                      onTap: () => context.push("/notice"),
+                    LoturaGesture(
+                      event: () => context.push("/notice"),
                       child: SvgPicture.asset(
                         "$iconCoreAsset/${readNoticeList.values.length != noticeList.values.length ? "unread_" : ""}bell_icon.svg",
                       ),
                     ),
                     const SizedBox(width: 12),
-                    GestureDetector(
-                      onTap: () => context.push("/setting"),
+                    LoturaGesture(
+                      event: () => context.push("/setting"),
                       child:
                           SvgPicture.asset("$iconCoreAsset/setting_icon.svg"),
                     ),

@@ -54,7 +54,7 @@ class _NoticeDetailScreenState extends ConsumerState<NoticeDetailScreen> {
   Widget build(BuildContext context) {
     final noticeState = ref.watch(getNoticeViewModelProvider).state;
     final noticeList = ref.watch(getNoticeViewModelProvider).values;
-    PreferredSizeWidget appBar = const LoturaAppBar(popRoute: "/notice");
+    PreferredSizeWidget appBar = const LoturaAppBar();
     return switch (noticeState) {
       GetNoticeState.initial => LoturaLoadingLayout(appBar: appBar),
       GetNoticeState.loading => LoturaLoadingLayout(appBar: appBar),

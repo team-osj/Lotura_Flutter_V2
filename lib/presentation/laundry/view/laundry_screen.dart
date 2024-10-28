@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/component/lotura_scroll_widget.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 import 'package:lotura_v2/core/dummy/laundry_room_locate_dummy.dart';
@@ -66,9 +67,8 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
               FittedBox(
                 child: Row(
                   children: [
-                    GestureDetector(
-                      behavior: HitTestBehavior.translucent,
-                      onTap: () {
+                    LoturaGesture(
+                      event: () {
                         if (localLaundryRoomOption != "남자 학교측") {
                           updateLocalLaundryRoomOption.changeOption(
                             option: "남자 학교측",
@@ -81,9 +81,8 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
                       ),
                     ),
                     const SizedBox(width: 12),
-                    GestureDetector(
-                      behavior: HitTestBehavior.translucent,
-                      onTap: () {
+                    LoturaGesture(
+                      event: () {
                         if (localLaundryRoomOption != "남자 기숙사측") {
                           updateLocalLaundryRoomOption.changeOption(
                             option: "남자 기숙사측",
@@ -96,9 +95,8 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
                       ),
                     ),
                     const SizedBox(width: 12),
-                    GestureDetector(
-                      behavior: HitTestBehavior.translucent,
-                      onTap: () {
+                    LoturaGesture(
+                      event: () {
                         if (localLaundryRoomOption != "여자 기숙사측") {
                           updateLocalLaundryRoomOption.changeOption(
                             option: "여자 기숙사측",

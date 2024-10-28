@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lotura_v2/core/component/lotura_app_bar.dart';
+import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/component/lotura_scroll_widget.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 import 'package:lotura_v2/core/layout/lotura_layout.dart';
@@ -43,7 +44,7 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
     final noticeList = ref.watch(getNoticeViewModelProvider).values;
     final noticeState = ref.watch(getNoticeViewModelProvider).state;
     PreferredSizeWidget appBar =
-        const LoturaAppBar(popRoute: "/", title: "공지사항");
+        const LoturaAppBar(title: "공지사항");
     return switch (noticeState) {
       GetNoticeState.initial => LoturaLoadingLayout(appBar: appBar),
       GetNoticeState.loading => LoturaLoadingLayout(appBar: appBar),
@@ -72,9 +73,8 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
                     itemBuilder: (context, index) {
                       final isRead = readNoticeList
                           .contains(noticeList.elementAt(index).id);
-                      return GestureDetector(
-                        behavior: HitTestBehavior.translucent,
-                        onTap: () =>
+                      return LoturaGesture(
+                        event: () =>
                             context.push("/noticeDetail", extra: index),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 16),

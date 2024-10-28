@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/constants/lotura_color.dart';
 import 'package:lotura_v2/presentation/main/provider/view_option_view_model_provider.dart';
 import 'package:lotura_v2/presentation/main/widget/view_option/main_view_option_button.dart';
@@ -47,8 +48,8 @@ class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
+                LoturaGesture(
+                  event: () {
                     /// 이벤트 실행 시, 화면에 변화가 필요 없다면 이벤트가 실행되지 않도록 예외처리
                     if (viewOption != 0) {
                       changeViewOption.changeOption(index: 0);
@@ -65,8 +66,8 @@ class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
                     ),
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {
+                LoturaGesture(
+                  event: () {
                     /// 이벤트 실행 시, 화면에 변화가 필요 없다면 이벤트가 실행되지 않도록 예외처리
                     if (viewOption == 0) {
                       changeViewOption.changeOption(index: 1);

@@ -15,10 +15,7 @@ class SettingScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final laundryOption = ref.watch(getLaundryRoomOptionViewModelProvider);
     return LoturaLayout(
-      appBar: const LoturaAppBar(
-        popRoute: "/",
-        title: "설정",
-      ),
+      appBar: const LoturaAppBar(title: "설정"),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(

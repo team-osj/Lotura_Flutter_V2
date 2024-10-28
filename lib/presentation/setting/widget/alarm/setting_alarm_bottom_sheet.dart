@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 import 'package:lotura_v2/presentation/setting/widget/alarm/setting_alarm_switch.dart';
 
@@ -25,8 +26,8 @@ class SettingAlarmBottomSheet extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 4),
-            GestureDetector(
-              onTap: () => context.pop("/setting"),
+            LoturaGesture(
+              event: () => context.pop("/setting"),
               child: Center(
                 child: SvgPicture.asset(
                   "$iconCoreAsset/bottom_arrow_icon.svg",

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 
 class SettingOptionWidget extends StatelessWidget {
@@ -16,9 +17,8 @@ class SettingOptionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTap: () => showModalBottomSheet(
+    return LoturaGesture(
+      event: () => showModalBottomSheet(
         context: context,
         backgroundColor: LoturaColor.white,
         builder: (context) {

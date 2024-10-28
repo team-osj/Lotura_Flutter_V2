@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lotura_v2/core/component/lotura_button.dart';
+import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 import 'package:lotura_v2/core/provider/state/device/device_state.dart';
 import 'package:lotura_v2/core/provider/state/device/device_type.dart';
@@ -12,9 +13,8 @@ class LaundryBottomSheet extends StatefulWidget {
   final DeviceState state;
   final Function actionFunc;
 
-  final bool? isLaundry;
-
   /// 지금 페이지가 세탁실 현황 페이지인지
+  final bool? isLaundry;
 
   const LaundryBottomSheet({
     super.key,
@@ -32,7 +32,7 @@ class LaundryBottomSheet extends StatefulWidget {
 class _LaundryBottomSheetState extends State<LaundryBottomSheet> {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return SafeArea(
       child: Container(
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
@@ -49,8 +49,8 @@ class _LaundryBottomSheetState extends State<LaundryBottomSheet> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 4),
-              GestureDetector(
-                onTap: () => context.pop("/"),
+              LoturaGesture(
+                event: () => context.pop("/"),
                 child: Center(
                   child: SvgPicture.asset(
                     "$iconCoreAsset/bottom_arrow_icon.svg",
@@ -80,9 +80,8 @@ class _LaundryBottomSheetState extends State<LaundryBottomSheet> {
                 Row(
                   children: [
                     Expanded(
-                      child: GestureDetector(
-                        behavior: HitTestBehavior.translucent,
-                        onTap: () => context.pop("/"),
+                      child: LoturaGesture(
+                        event: () => context.pop("/"),
                         child: const LoturaButton(
                           text: "취소",
                           textColor: LoturaColor.black,
@@ -92,9 +91,8 @@ class _LaundryBottomSheetState extends State<LaundryBottomSheet> {
                     ),
                     const SizedBox(width: 14),
                     Expanded(
-                      child: GestureDetector(
-                        behavior: HitTestBehavior.translucent,
-                        onTap: () {},
+                      child: LoturaGesture(
+                        event: () {},
                         child: LoturaButton(
                           text: widget.isLaundry! ? "알림 설정" : "알림 해제",
                         ),
@@ -103,8 +101,8 @@ class _LaundryBottomSheetState extends State<LaundryBottomSheet> {
                   ],
                 )
               else
-                GestureDetector(
-                  onTap: () => context.pop("/"),
+                LoturaGesture(
+                  event: () => context.pop("/"),
                   child: const LoturaButton(text: "확인"),
                 ),
               const SizedBox(height: 20),
@@ -122,7 +120,11 @@ class _LaundryBottomSheetState extends State<LaundryBottomSheet> {
     final device = type.text;
     switch (state) {
       case DeviceState.working:
-        return "$device가 종료되면 알림을 드릴게요.";
+        if (widget.isLaundry!) {
+          return "$device가 종료되면 알림을 드릴게요.";
+        } else {
+          return "알림 설정을 해제하시면 종료 알림을 받으실 수 없습니다.";
+        }
       case DeviceState.available:
         return null;
       case DeviceState.disconnect:
@@ -140,7 +142,11 @@ class _LaundryBottomSheetState extends State<LaundryBottomSheet> {
     final device = type.text;
     switch (state) {
       case DeviceState.working:
-        return "$id번 $device를\n알림 설정할까요?";
+        if (widget.isLaundry!) {
+          return "$id번 $device를\n알림 설정할까요?";
+        } else {
+          return "$id번 $device의\n알림 설정을 해제하실 건가요?";
+        }
       case DeviceState.available:
         return "$id번 $device는\n현재 사용할 수 있어요!";
       case DeviceState.disconnect:
