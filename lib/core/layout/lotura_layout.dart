@@ -21,7 +21,7 @@ class LoturaLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor ?? LoturaLightColor.white,
+      backgroundColor: backgroundColor ?? LoturaLightColor.background,
       appBar: appBar,
       body: SafeArea(
         child: child,

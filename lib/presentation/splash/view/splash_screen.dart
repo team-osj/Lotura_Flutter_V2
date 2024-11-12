@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
+import 'package:lotura_v2/core/layout/lotura_layout.dart';
 import 'package:lotura_v2/presentation/laundry/provider/get_stream_laundry_view_model_provider.dart';
 import 'package:lotura_v2/presentation/notice/provider/get_notice_option_view_model_provider.dart';
 import 'package:lotura_v2/presentation/notice/provider/get_notice_view_model_provider.dart';
@@ -35,9 +36,8 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: LoturaLightColor.white,
-      body: Center(
+    return LoturaLayout(
+      child: Center(
         child: Image.asset(
           "$imageCoreAsset/lotura_splash_image.png",
           width: 280,
