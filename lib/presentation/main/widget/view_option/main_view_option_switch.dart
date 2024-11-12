@@ -28,7 +28,7 @@ class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
           height: height,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: LoturaColor.gray50,
+            color: LoturaLightColor.gray50,
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -43,7 +43,7 @@ class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
                     width: itemWidth,
                     height: itemHeight,
                     decoration: BoxDecoration(
-                      color: LoturaColor.white,
+                      color: LoturaLightColor.white,
                       borderRadius: BorderRadius.circular(4),
                     ),
                   ),

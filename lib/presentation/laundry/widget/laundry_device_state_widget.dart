@@ -24,7 +24,7 @@ class LaundryDeviceStateWidget extends StatelessWidget {
       event: () {
         showModalBottomSheet(
           context: context,
-          backgroundColor: LoturaColor.white,
+          backgroundColor: LoturaLightColor.white,
           builder: (context) {
             return LaundryBottomSheet(
               state: state,
@@ -58,13 +58,13 @@ class LaundryDeviceStateWidget extends StatelessWidget {
               Text(
                 "$id번",
                 style: LoturaTextStyle.subTitle3(
-                  color: LoturaColor.black,
+                  color: LoturaLightColor.black,
                 ),
               ),
               Text(
                 type.text,
                 style: LoturaTextStyle.body1(
-                  color: LoturaColor.black,
+                  color: LoturaLightColor.black,
                 ),
               ),
             ],

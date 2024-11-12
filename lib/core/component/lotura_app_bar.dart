@@ -29,7 +29,7 @@ class LoturaAppBar extends StatelessWidget implements PreferredSizeWidget {
 
           /// title 위젯을 center에 배치
           centerTitle: true,
-          backgroundColor: LoturaColor.white,
+          backgroundColor: LoturaLightColor.white,
           leading: LoturaGesture(
             event: () => context.pop(),
             child: Center(
@@ -42,7 +42,7 @@ class LoturaAppBar extends StatelessWidget implements PreferredSizeWidget {
               ? Text(
                   title!,
                   style: LoturaTextStyle.subTitle2(
-                    color: LoturaColor.gray900,
+                    color: LoturaLightColor.gray900,
                   ),
                 )
               : null,

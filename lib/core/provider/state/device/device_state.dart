@@ -4,29 +4,29 @@ import 'package:lotura_v2/core/constants/lotura_style.dart';
 enum DeviceState {
   /// 작동중
   working(
-    color: LoturaColor.main50,
-    iconColor: LoturaColor.main500,
+    color: LoturaLightColor.main50,
+    iconColor: LoturaLightColor.main500,
     text: "작동중",
   ),
 
   /// 사용 가능
   available(
-    color: LoturaColor.green10,
-    iconColor: LoturaColor.green20,
+    color: LoturaLightColor.green10,
+    iconColor: LoturaLightColor.green20,
     text: "사용 가능",
   ),
 
   /// 연결 끊김
   disconnect(
-    color: LoturaColor.gray50,
-    iconColor: LoturaColor.gray500,
+    color: LoturaLightColor.gray50,
+    iconColor: LoturaLightColor.gray500,
     text: "연결 끊김",
   ),
 
   /// 고장
   breakdown(
-    color: LoturaColor.red10,
-    iconColor: LoturaColor.red20,
+    color: LoturaLightColor.red10,
+    iconColor: LoturaLightColor.red20,
     text: "고장",
   );
 

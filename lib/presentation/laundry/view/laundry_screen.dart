@@ -60,7 +60,7 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
               Text(
                 localLaundryRoomOption!.replaceAll("측", " 측"),
                 style: LoturaTextStyle.heading3(
-                  color: LoturaColor.black,
+                  color: LoturaLightColor.black,
                 ),
               ),
               const SizedBox(height: 16),

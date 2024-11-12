@@ -20,7 +20,7 @@ class SettingOptionWidget extends StatelessWidget {
     return LoturaGesture(
       event: () => showModalBottomSheet(
         context: context,
-        backgroundColor: LoturaColor.white,
+        backgroundColor: LoturaLightColor.white,
         builder: (context) {
           return SafeArea(
             child: bottomSheet,
@@ -35,7 +35,7 @@ class SettingOptionWidget extends StatelessWidget {
             Text(
               title,
               style: LoturaTextStyle.subTitle2(
-                color: LoturaColor.black,
+                color: LoturaLightColor.black,
               ),
             ),
             Row(
@@ -43,7 +43,7 @@ class SettingOptionWidget extends StatelessWidget {
                 Text(
                   option ?? "",
                   style: LoturaTextStyle.subTitle2(
-                    color: LoturaColor.main500,
+                    color: LoturaLightColor.main500,
                   ),
                 ),
                 const SizedBox(width: 8),

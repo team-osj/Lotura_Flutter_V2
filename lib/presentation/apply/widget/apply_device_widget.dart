@@ -25,7 +25,7 @@ class ApplyDeviceWidget extends StatelessWidget {
     return LoturaGesture(
       event: () => showModalBottomSheet(
         context: context,
-        backgroundColor: LoturaColor.white,
+        backgroundColor: LoturaLightColor.white,
         builder: (context) {
           return LaundryBottomSheet(
             state: state,
@@ -42,7 +42,7 @@ class ApplyDeviceWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               width: 1,
-              color: LoturaColor.main50,
+              color: LoturaLightColor.main50,
               strokeAlign: BorderSide.strokeAlignInside,
             ),
           ),
@@ -60,7 +60,7 @@ class ApplyDeviceWidget extends StatelessWidget {
                 Text(
                   "$id번 ${type.text}",
                   style: LoturaTextStyle.subTitle2(
-                    color: LoturaColor.black,
+                    color: LoturaLightColor.black,
                   ),
                 ),
                 const SizedBox(height: 12),

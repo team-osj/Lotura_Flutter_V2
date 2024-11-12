@@ -46,7 +46,7 @@ class SettingMainLaundryBottomSheet extends ConsumerWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       decoration: const BoxDecoration(
-        color: LoturaColor.white,
+        color: LoturaLightColor.white,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
@@ -71,14 +71,14 @@ class SettingMainLaundryBottomSheet extends ConsumerWidget {
             Text(
               "메인 세탁실 설정",
               style: LoturaTextStyle.heading4(
-                color: LoturaColor.black,
+                color: LoturaLightColor.black,
               ),
             ),
             const SizedBox(height: 8),
             Text(
               "세탁실 탭에서 처음에 보여질 세탁실을 선택해보세요.",
               style: LoturaTextStyle.body2(
-                color: LoturaColor.gray700,
+                color: LoturaLightColor.gray700,
               ),
             ),
             const SizedBox(height: 20),

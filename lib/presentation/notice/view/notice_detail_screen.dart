@@ -71,14 +71,14 @@ class _NoticeDetailScreenState extends ConsumerState<NoticeDetailScreen> {
                   Text(
                     noticeList.elementAt(widget.index).title,
                     style: LoturaTextStyle.heading3(
-                      color: LoturaColor.black,
+                      color: LoturaLightColor.black,
                     ),
                   ),
                   const SizedBox(height: 12),
                   Text(
                     noticeList.elementAt(widget.index).date.split(" ")[0],
                     style: LoturaTextStyle.button1(
-                      color: LoturaColor.gray600,
+                      color: LoturaLightColor.gray600,
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -91,7 +91,7 @@ class _NoticeDetailScreenState extends ConsumerState<NoticeDetailScreen> {
                       await launchUrl(Uri.parse(href!));
                     },
                     styleSheet: MarkdownStyleSheet(
-                      p: LoturaTextStyle.body1(color: LoturaColor.black),
+                      p: LoturaTextStyle.body1(color: LoturaLightColor.black),
                     ),
                   ),
                 ],

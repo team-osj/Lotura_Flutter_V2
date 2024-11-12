@@ -25,14 +25,14 @@ class SettingLaundryLocateWidget extends ConsumerWidget {
           Text(
             option,
             style: LoturaTextStyle.button1(
-              color: LoturaColor.black,
+              color: LoturaLightColor.black,
             ),
           ),
           /// loading indicator를 보여주기 위함.
           if (getLaundryRoomOptionState.option == option && updateLaundryRoomOptionState != UpdateLaundryRoomOptionState.loading)
             SvgPicture.asset("$iconSettingAsset/check_icon.svg"),
           if (updateLaundryRoomOptionState == UpdateLaundryRoomOptionState.loading)
-            const CupertinoActivityIndicator(color: LoturaColor.gray200),
+            const CupertinoActivityIndicator(color: LoturaLightColor.gray200),
         ],
       ),
     );

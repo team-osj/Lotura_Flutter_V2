@@ -21,14 +21,14 @@ class SettingAlarmSwitch extends StatelessWidget {
           Text(
             option,
             style: LoturaTextStyle.button1(
-              color: LoturaColor.black,
+              color: LoturaLightColor.black,
             ),
           ),
           CupertinoSwitch(
             value: value,
-            activeColor: LoturaColor.main500,
-            trackColor: LoturaColor.gray100,
-            thumbColor: LoturaColor.white,
+            activeColor: LoturaLightColor.main500,
+            trackColor: LoturaLightColor.gray100,
+            thumbColor: LoturaLightColor.white,
             onChanged: (value) {},
           ),
         ],

@@ -92,7 +92,7 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
                                     Text(
                                       noticeList.elementAt(index).title,
                                       style: LoturaTextStyle.subTitle2(
-                                        color: LoturaColor.black,
+                                        color: LoturaLightColor.black,
                                       ),
                                     ),
                                     const SizedBox(height: 8),
@@ -104,7 +104,7 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
                                               .date
                                               .split(" ")[0],
                                           style: LoturaTextStyle.label(
-                                            color: LoturaColor.gray600,
+                                            color: LoturaLightColor.gray600,
                                           ),
                                         ),
                                         const SizedBox(width: 10),
@@ -112,13 +112,13 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
                                             ? Text(
                                                 "읽음",
                                                 style: LoturaTextStyle.body3(
-                                                  color: LoturaColor.gray500,
+                                                  color: LoturaLightColor.gray500,
                                                 ),
                                               )
                                             : Text(
                                                 "안 읽음",
                                                 style: LoturaTextStyle.body3(
-                                                  color: LoturaColor.main500,
+                                                  color: LoturaLightColor.main500,
                                                 ),
                                               ),
                                       ],

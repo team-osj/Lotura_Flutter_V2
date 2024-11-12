@@ -16,8 +16,8 @@ class LaundryRoomSelectRadioButton extends ConsumerWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: localLaundryRoomOption == option
-            ? LoturaColor.main500
-            : LoturaColor.gray50,
+            ? LoturaLightColor.main500
+            : LoturaLightColor.gray50,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Padding(
@@ -27,8 +27,8 @@ class LaundryRoomSelectRadioButton extends ConsumerWidget {
           option == "여자 기숙사측" ? "여자" : option,
           style: LoturaTextStyle.button1(
             color: localLaundryRoomOption == option
-                ? LoturaColor.white
-                : LoturaColor.gray500,
+                ? LoturaLightColor.white
+                : LoturaLightColor.gray500,
           ),
         ),
       ),

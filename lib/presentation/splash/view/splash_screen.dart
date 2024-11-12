@@ -36,7 +36,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: LoturaColor.white,
+      backgroundColor: LoturaLightColor.white,
       body: Center(
         child: Image.asset(
           "$imageCoreAsset/lotura_splash_image.png",

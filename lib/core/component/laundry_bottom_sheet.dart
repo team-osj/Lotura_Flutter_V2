@@ -36,7 +36,7 @@ class _LaundryBottomSheetState extends State<LaundryBottomSheet> {
       child: Container(
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
-          color: LoturaColor.white,
+          color: LoturaLightColor.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -62,7 +62,7 @@ class _LaundryBottomSheetState extends State<LaundryBottomSheet> {
                 formatTitle(
                     id: widget.id, type: widget.type, state: widget.state),
                 style: LoturaTextStyle.heading4(
-                  color: LoturaColor.black,
+                  color: LoturaLightColor.black,
                 ),
               ),
               if (widget.state != DeviceState.available)
@@ -71,7 +71,7 @@ class _LaundryBottomSheetState extends State<LaundryBottomSheet> {
                   child: Text(
                     formatNotice(type: widget.type, state: widget.state)!,
                     style: LoturaTextStyle.body2(
-                      color: LoturaColor.gray700,
+                      color: LoturaLightColor.gray700,
                     ),
                   ),
                 ),
@@ -84,8 +84,8 @@ class _LaundryBottomSheetState extends State<LaundryBottomSheet> {
                         event: () => context.pop("/"),
                         child: const LoturaButton(
                           text: "취소",
-                          textColor: LoturaColor.black,
-                          backgroundColor: LoturaColor.gray50,
+                          textColor: LoturaLightColor.black,
+                          backgroundColor: LoturaLightColor.gray50,
                         ),
                       ),
                     ),

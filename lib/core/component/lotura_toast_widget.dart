@@ -32,10 +32,10 @@ class _LoturaToastWidgetState extends State<LoturaToastWidget> {
         child: Padding(
           padding: const EdgeInsets.only(bottom: 58),
           child: Material(
-            color: LoturaColor.transparent,
+            color: LoturaLightColor.transparent,
             child: Container(
               decoration: BoxDecoration(
-                color: LoturaColor.gray50,
+                color: LoturaLightColor.gray50,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Padding(
@@ -51,7 +51,7 @@ class _LoturaToastWidgetState extends State<LoturaToastWidget> {
                     Text(
                       widget.text,
                       style: LoturaTextStyle.body1(
-                        color: LoturaColor.black,
+                        color: LoturaLightColor.black,
                       ),
                     ),
                   ],

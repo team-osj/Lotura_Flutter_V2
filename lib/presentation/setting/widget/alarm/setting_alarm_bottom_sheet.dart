@@ -13,7 +13,7 @@ class SettingAlarmBottomSheet extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       decoration: const BoxDecoration(
-        color: LoturaColor.white,
+        color: LoturaLightColor.white,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
@@ -38,14 +38,14 @@ class SettingAlarmBottomSheet extends StatelessWidget {
             Text(
               "알림음 설정",
               style: LoturaTextStyle.heading4(
-                color: LoturaColor.black,
+                color: LoturaLightColor.black,
               ),
             ),
             const SizedBox(height: 8),
             Text(
               "세탁기와 건조기의 알림을 더 편리하게 들어보세요.",
               style: LoturaTextStyle.body2(
-                color: LoturaColor.gray700,
+                color: LoturaLightColor.gray700,
               ),
             ),
             const SizedBox(height: 20),

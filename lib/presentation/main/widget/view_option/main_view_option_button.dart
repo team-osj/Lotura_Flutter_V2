@@ -25,14 +25,14 @@ class MainViewOptionButton extends StatelessWidget {
       width: width,
       height: height,
       /// 투명한 색상 지정
-      color: LoturaColor.transparent,
+      color: LoturaLightColor.transparent,
       /// 가운데 정렬
       alignment: Alignment.center,
       child: Text(
         text,
         /// 텍스트 가운데 정렬
         style: LoturaTextStyle.body2(
-          color: isSwitched ? LoturaColor.main900 : LoturaColor.black,
+          color: isSwitched ? LoturaLightColor.main900 : LoturaLightColor.black,
         ),
       ),
     );

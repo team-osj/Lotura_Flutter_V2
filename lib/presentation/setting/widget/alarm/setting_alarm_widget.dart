@@ -34,7 +34,7 @@ class SettingAlarmWidget extends StatelessWidget {
             Text(
               "알림음 설정",
               style: LoturaTextStyle.subTitle2(
-                color: LoturaColor.black,
+                color: LoturaLightColor.black,
               ),
             ),
             SvgPicture.asset(

@@ -27,7 +27,7 @@ class LoturaNetworkErrorLayout extends StatelessWidget {
                 Text(
                   "네트워크 연결이 끊겼습니다.",
                   style: LoturaTextStyle.heading4(
-                    color: LoturaColor.gray600,
+                    color: LoturaLightColor.gray600,
                   ),
                 ),
               ],

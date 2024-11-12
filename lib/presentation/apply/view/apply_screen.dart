@@ -43,14 +43,14 @@ class _ApplyScreenState extends State<ApplyScreen> {
               Text(
                 "알람 설정한\n세탁기와 건조기",
                 style: LoturaTextStyle.heading2(
-                  color: LoturaColor.black,
+                  color: LoturaLightColor.black,
                 ),
               ),
               const SizedBox(height: 14),
               Text(
                 "알림을 설정하여 세탁기와 건조기를\n누구보다 빠르게 사용해보세요.",
                 style: LoturaTextStyle.body1(
-                  color: LoturaColor.gray500,
+                  color: LoturaLightColor.gray500,
                 ),
               ),
               const SizedBox(height: 28),
@@ -68,7 +68,7 @@ class _ApplyScreenState extends State<ApplyScreen> {
                   return const ApplyDeviceWidget(
                     id: 1,
                     type: DeviceType.dryer,
-                    state: DeviceState.available,
+                    state: DeviceState.working,
                   );
                 },
               ),

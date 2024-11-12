@@ -28,7 +28,7 @@ class MainAppBar extends ConsumerWidget implements PreferredSizeWidget {
 
           /// title property 사용 시, 양 옆 padding 제거
           titleSpacing: 0,
-          backgroundColor: LoturaColor.white,
+          backgroundColor: LoturaLightColor.white,
           title: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Row(
