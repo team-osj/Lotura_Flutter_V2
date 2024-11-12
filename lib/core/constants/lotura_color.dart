@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class LoturaLightColor {
   LoturaLightColor._();
 
+  static const Color background = Color(0xFFFFFFFF);
+
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
   static const Color transparent = Color(0x00000000);
