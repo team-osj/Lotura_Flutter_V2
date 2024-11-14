@@ -29,12 +29,16 @@ class LoturaAppBar extends StatelessWidget implements PreferredSizeWidget {
 
           /// title 위젯을 center에 배치
           centerTitle: true,
-          backgroundColor: LoturaLightColor.background,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           leading: LoturaGesture(
             event: () => context.pop(),
             child: Center(
               child: SvgPicture.asset(
                 "$iconCoreAsset/left_arrow_icon.svg",
+                colorFilter: ColorFilter.mode(
+                  Theme.of(context).colorScheme.surfaceContainerHigh,
+                  BlendMode.srcIn,
+                ),
               ),
             ),
           ),
@@ -42,7 +46,7 @@ class LoturaAppBar extends StatelessWidget implements PreferredSizeWidget {
               ? Text(
                   title!,
                   style: LoturaTextStyle.subTitle2(
-                    color: LoturaLightColor.gray900,
+                    color: Theme.of(context).colorScheme.surfaceContainerHigh,
                   ),
                 )
               : null,
