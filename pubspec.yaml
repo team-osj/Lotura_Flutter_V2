@@ -51,6 +51,8 @@ flutter:
     - assets/icon/laundry/
     - assets/icon/notice/
     - assets/icon/setting/
+    - assets/icon/theme/
+    - assets/icon/theme/bell/
     - assets/image/core/
     - assets/image/apply/
     - assets/image/notice/
