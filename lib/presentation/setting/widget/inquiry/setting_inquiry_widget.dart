@@ -23,11 +23,15 @@ class SettingInquiryWidget extends StatelessWidget {
             Text(
               "문의하기",
               style: LoturaTextStyle.subTitle2(
-                color: LoturaLightColor.black,
+                color: Theme.of(context).colorScheme.inverseSurface,
               ),
             ),
             SvgPicture.asset(
               "$iconSettingAsset/right_arrow_icon.svg",
+              colorFilter: ColorFilter.mode(
+                Theme.of(context).colorScheme.surfaceTint,
+                BlendMode.srcIn,
+              ),
             ),
           ],
         ),

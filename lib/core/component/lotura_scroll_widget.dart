@@ -18,7 +18,7 @@ class LoturaScrollWidget extends StatelessWidget {
     return RawScrollbar(
       controller: controller,
       thickness: 6,
-      thumbColor: LoturaLightColor.gray200,
+      thumbColor: Theme.of(context).colorScheme.surfaceDim,
       crossAxisMargin: 6,
       radius: const Radius.circular(12),
       child: SingleChildScrollView(

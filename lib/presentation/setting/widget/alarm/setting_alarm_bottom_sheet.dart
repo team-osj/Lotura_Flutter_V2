@@ -12,9 +12,9 @@ class SettingAlarmBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      decoration: const BoxDecoration(
-        color: LoturaLightColor.white,
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.onSurface,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
         ),
@@ -31,6 +31,10 @@ class SettingAlarmBottomSheet extends StatelessWidget {
               child: Center(
                 child: SvgPicture.asset(
                   "$iconCoreAsset/bottom_arrow_icon.svg",
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).colorScheme.surfaceContainerLowest,
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
             ),
@@ -38,14 +42,14 @@ class SettingAlarmBottomSheet extends StatelessWidget {
             Text(
               "알림음 설정",
               style: LoturaTextStyle.heading4(
-                color: LoturaLightColor.black,
+                color: Theme.of(context).colorScheme.inverseSurface,
               ),
             ),
             const SizedBox(height: 8),
             Text(
               "세탁기와 건조기의 알림을 더 편리하게 들어보세요.",
               style: LoturaTextStyle.body2(
-                color: LoturaLightColor.gray700,
+                color: Theme.of(context).colorScheme.surfaceContainer,
               ),
             ),
             const SizedBox(height: 20),

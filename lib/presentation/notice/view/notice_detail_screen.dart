@@ -32,10 +32,17 @@ class _NoticeDetailScreenState extends ConsumerState<NoticeDetailScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final noticeListId = ref.watch(getNoticeViewModelProvider).values.elementAt(widget.index).id;
+      final noticeListId = ref
+          .watch(getNoticeViewModelProvider)
+          .values
+          .elementAt(widget.index)
+          .id;
       final readNoticeList = ref.watch(getNoticeOptionViewModelProvider).values;
       if (!readNoticeList.contains(noticeListId)) {
-        ref.read(updateNoticeOptionViewModelProvider.notifier).execute(id: noticeListId);
+        ref
+            .read(updateNoticeOptionViewModelProvider.notifier)
+            .execute(id: noticeListId);
+
         /// 데이터 재빌드
         ref.read(getNoticeOptionViewModelProvider.notifier).execute();
       }
@@ -48,7 +55,6 @@ class _NoticeDetailScreenState extends ConsumerState<NoticeDetailScreen> {
     controller.dispose();
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -71,14 +77,13 @@ class _NoticeDetailScreenState extends ConsumerState<NoticeDetailScreen> {
                   Text(
                     noticeList.elementAt(widget.index).title,
                     style: LoturaTextStyle.heading3(
-                      color: LoturaLightColor.black,
-                    ),
+                        color: Theme.of(context).colorScheme.inverseSurface),
                   ),
                   const SizedBox(height: 12),
                   Text(
                     noticeList.elementAt(widget.index).date.split(" ")[0],
                     style: LoturaTextStyle.button1(
-                      color: LoturaLightColor.gray600,
+                      color: Theme.of(context).colorScheme.surfaceContainerLow,
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -91,7 +96,9 @@ class _NoticeDetailScreenState extends ConsumerState<NoticeDetailScreen> {
                       await launchUrl(Uri.parse(href!));
                     },
                     styleSheet: MarkdownStyleSheet(
-                      p: LoturaTextStyle.body1(color: LoturaLightColor.black),
+                      p: LoturaTextStyle.body1(
+                        color: Theme.of(context).colorScheme.inverseSurface,
+                      ),
                     ),
                   ),
                 ],

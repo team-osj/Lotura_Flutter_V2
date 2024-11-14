@@ -43,14 +43,14 @@ class _ApplyScreenState extends State<ApplyScreen> {
               Text(
                 "알람 설정한\n세탁기와 건조기",
                 style: LoturaTextStyle.heading2(
-                  color: LoturaLightColor.black,
+                  color: Theme.of(context).colorScheme.inverseSurface,
                 ),
               ),
               const SizedBox(height: 14),
               Text(
                 "알림을 설정하여 세탁기와 건조기를\n누구보다 빠르게 사용해보세요.",
                 style: LoturaTextStyle.body1(
-                  color: LoturaLightColor.gray500,
+                  color: Theme.of(context).colorScheme.onSecondary,
                 ),
               ),
               const SizedBox(height: 28),

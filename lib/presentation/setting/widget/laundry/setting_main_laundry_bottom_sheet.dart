@@ -45,9 +45,9 @@ class SettingMainLaundryBottomSheet extends ConsumerWidget {
     });
     return Container(
       width: MediaQuery.of(context).size.width,
-      decoration: const BoxDecoration(
-        color: LoturaLightColor.white,
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.onSurface,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
         ),
@@ -64,6 +64,10 @@ class SettingMainLaundryBottomSheet extends ConsumerWidget {
               child: Center(
                 child: SvgPicture.asset(
                   "$iconCoreAsset/bottom_arrow_icon.svg",
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).colorScheme.surfaceContainerLowest,
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
             ),
@@ -71,14 +75,14 @@ class SettingMainLaundryBottomSheet extends ConsumerWidget {
             Text(
               "메인 세탁실 설정",
               style: LoturaTextStyle.heading4(
-                color: LoturaLightColor.black,
+                color: Theme.of(context).colorScheme.inverseSurface,
               ),
             ),
             const SizedBox(height: 8),
             Text(
               "세탁실 탭에서 처음에 보여질 세탁실을 선택해보세요.",
               style: LoturaTextStyle.body2(
-                color: LoturaLightColor.gray700,
+                color: Theme.of(context).colorScheme.surfaceContainer,
               ),
             ),
             const SizedBox(height: 20),

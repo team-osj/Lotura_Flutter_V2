@@ -43,8 +43,7 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
     final readNoticeList = ref.watch(getNoticeOptionViewModelProvider).values;
     final noticeList = ref.watch(getNoticeViewModelProvider).values;
     final noticeState = ref.watch(getNoticeViewModelProvider).state;
-    PreferredSizeWidget appBar =
-        const LoturaAppBar(title: "공지사항");
+    PreferredSizeWidget appBar = const LoturaAppBar(title: "공지사항");
     return switch (noticeState) {
       GetNoticeState.initial => LoturaLoadingLayout(appBar: appBar),
       GetNoticeState.loading => LoturaLoadingLayout(appBar: appBar),
@@ -60,7 +59,7 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
                 children: [
                   const SizedBox(height: 8),
                   Image.asset(
-                    "$imageNoticeAsset/notice_banner_image.png",
+                    "$imageNoticeAsset/notice_${Theme.of(context).colorScheme.brightness.name}_banner_image.png",
                   ),
                   const SizedBox(height: 12),
                   ListView.builder(
@@ -83,7 +82,12 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SvgPicture.asset(
-                                  "$iconNoticeAsset/comment_icon.svg"),
+                                "$iconNoticeAsset/comment_icon.svg",
+                                colorFilter: ColorFilter.mode(
+                                  Theme.of(context).colorScheme.primaryFixed,
+                                  BlendMode.srcIn,
+                                ),
+                              ),
                               const SizedBox(width: 24),
                               Expanded(
                                 child: Column(
@@ -92,7 +96,9 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
                                     Text(
                                       noticeList.elementAt(index).title,
                                       style: LoturaTextStyle.subTitle2(
-                                        color: LoturaLightColor.black,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .inverseSurface,
                                       ),
                                     ),
                                     const SizedBox(height: 8),
@@ -104,7 +110,9 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
                                               .date
                                               .split(" ")[0],
                                           style: LoturaTextStyle.label(
-                                            color: LoturaLightColor.gray600,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .surfaceContainerLow,
                                           ),
                                         ),
                                         const SizedBox(width: 10),
@@ -112,13 +120,17 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
                                             ? Text(
                                                 "읽음",
                                                 style: LoturaTextStyle.body3(
-                                                  color: LoturaLightColor.gray500,
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .onSecondary,
                                                 ),
                                               )
                                             : Text(
                                                 "안 읽음",
                                                 style: LoturaTextStyle.body3(
-                                                  color: LoturaLightColor.main500,
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .primary,
                                                 ),
                                               ),
                                       ],

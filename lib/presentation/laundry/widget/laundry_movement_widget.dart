@@ -9,7 +9,13 @@ class LaundryMovementWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 33),
-      child: SvgPicture.asset("$iconLaundryAsset/movement_sign_icon.svg"),
+      child: SvgPicture.asset(
+        "$iconLaundryAsset/movement_sign_icon.svg",
+        colorFilter: ColorFilter.mode(
+          Theme.of(context).colorScheme.surfaceContainerLowest,
+          BlendMode.srcIn,
+        ),
+      ),
     );
   }
 }

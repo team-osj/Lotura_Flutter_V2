@@ -24,7 +24,7 @@ class LaundryDeviceStateWidget extends StatelessWidget {
       event: () {
         showModalBottomSheet(
           context: context,
-          backgroundColor: LoturaLightColor.white,
+          backgroundColor: Theme.of(context).colorScheme.onSurface,
           builder: (context) {
             return LaundryBottomSheet(
               state: state,
@@ -37,7 +37,7 @@ class LaundryDeviceStateWidget extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: state.color,
+          color: state.themeColorHandler(context),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Padding(
@@ -50,7 +50,7 @@ class LaundryDeviceStateWidget extends StatelessWidget {
               SvgPicture.asset(
                 "$iconLaundryAsset/${type.name}_icon.svg",
                 colorFilter: ColorFilter.mode(
-                  state.iconColor,
+                  state.themeIconColorHandler(context),
                   BlendMode.srcIn,
                 ),
               ),
@@ -58,13 +58,13 @@ class LaundryDeviceStateWidget extends StatelessWidget {
               Text(
                 "$id번",
                 style: LoturaTextStyle.subTitle3(
-                  color: LoturaLightColor.black,
+                  color: Theme.of(context).colorScheme.inverseSurface,
                 ),
               ),
               Text(
                 type.text,
                 style: LoturaTextStyle.body1(
-                  color: LoturaLightColor.black,
+                  color: Theme.of(context).colorScheme.inverseSurface,
                 ),
               ),
             ],

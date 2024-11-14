@@ -22,12 +22,18 @@ class LoturaNetworkErrorLayout extends StatelessWidget {
           children: [
             Column(
               children: [
-                SvgPicture.asset("$iconCoreAsset/network_error_icon.svg"),
+                SvgPicture.asset(
+                  "$iconCoreAsset/network_error_icon.svg",
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).colorScheme.surfaceContainerLow,
+                    BlendMode.srcIn,
+                  ),
+                ),
                 const SizedBox(height: 24),
                 Text(
                   "네트워크 연결이 끊겼습니다.",
                   style: LoturaTextStyle.heading4(
-                    color: LoturaLightColor.gray600,
+                    color: Theme.of(context).colorScheme.surfaceContainerLow,
                   ),
                 ),
               ],

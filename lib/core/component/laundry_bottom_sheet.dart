@@ -35,9 +35,9 @@ class _LaundryBottomSheetState extends State<LaundryBottomSheet> {
     return SafeArea(
       child: Container(
         width: MediaQuery.of(context).size.width,
-        decoration: const BoxDecoration(
-          color: LoturaLightColor.white,
-          borderRadius: BorderRadius.only(
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.onSurface,
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
           ),
@@ -54,6 +54,10 @@ class _LaundryBottomSheetState extends State<LaundryBottomSheet> {
                 child: Center(
                   child: SvgPicture.asset(
                     "$iconCoreAsset/bottom_arrow_icon.svg",
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).colorScheme.surfaceContainerLowest,
+                      BlendMode.srcIn,
+                    ),
                   ),
                 ),
               ),
@@ -62,7 +66,7 @@ class _LaundryBottomSheetState extends State<LaundryBottomSheet> {
                 formatTitle(
                     id: widget.id, type: widget.type, state: widget.state),
                 style: LoturaTextStyle.heading4(
-                  color: LoturaLightColor.black,
+                  color: Theme.of(context).colorScheme.inverseSurface,
                 ),
               ),
               if (widget.state != DeviceState.available)
@@ -71,7 +75,7 @@ class _LaundryBottomSheetState extends State<LaundryBottomSheet> {
                   child: Text(
                     formatNotice(type: widget.type, state: widget.state)!,
                     style: LoturaTextStyle.body2(
-                      color: LoturaLightColor.gray700,
+                      color: Theme.of(context).colorScheme.surfaceContainer,
                     ),
                   ),
                 ),
@@ -82,10 +86,11 @@ class _LaundryBottomSheetState extends State<LaundryBottomSheet> {
                     Expanded(
                       child: LoturaGesture(
                         event: () => context.pop("/"),
-                        child: const LoturaButton(
+                        child: LoturaButton(
                           text: "취소",
-                          textColor: LoturaLightColor.black,
-                          backgroundColor: LoturaLightColor.gray50,
+                          textColor: Theme.of(context).colorScheme.inverseSurface,
+                          backgroundColor:
+                              Theme.of(context).colorScheme.secondary,
                         ),
                       ),
                     ),
