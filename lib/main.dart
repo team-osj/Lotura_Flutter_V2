@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:lotura_v2/core/theme/lotura_theme.dart';
 import 'package:lotura_v2/core/di/lotura_router.dart';
 import 'package:lotura_v2/core/hive/laundry_room_option.dart';
+import 'package:lotura_v2/core/theme/view_model/provider/get_theme_option_view_model_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  /// Hive 어댑터 등록
   Hive.registerAdapter(LaundryRoomOptionAdapter());
   runApp(
     const ProviderScope(
@@ -16,13 +17,16 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
       routerConfig: loturaRouter,
+      darkTheme: LoturaTheme.dark,
+      theme: LoturaTheme.light,
+      themeMode: ref.watch(getThemeOptionViewModelProvider).mode,
       debugShowCheckedModeBanner: false,
     );
   }
