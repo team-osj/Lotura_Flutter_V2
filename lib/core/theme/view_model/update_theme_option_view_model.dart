@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lotura_v2/core/hive/theme_option.dart';
 import 'package:lotura_v2/domain/use_case/theme/update_theme_option_use_case.dart';
 import 'package:lotura_v2/core/theme/view_model/state/update_theme_option_state.dart';
 
@@ -18,8 +19,8 @@ class UpdateThemeOptionViewModel extends StateNotifier<UpdateThemeOptionState> {
       state = UpdateThemeOptionState.loading;
 
       final mode = switch(brightness) {
-        Brightness.dark => ThemeMode.light,
-        Brightness.light => ThemeMode.dark,
+        Brightness.dark => ThemeOption.light,
+        Brightness.light => ThemeOption.dark,
       };
 
       await _updateThemeOptionUseCase.execute(mode: mode);

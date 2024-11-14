@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:lotura_v2/core/hive/theme_option.dart';
 
 abstract class ThemeRepository {
-  Future<void> updateThemeOption({required ThemeMode mode});
+  Future<void> updateThemeOption({required ThemeOption mode});
 
-  Future<ThemeMode?> getThemeOption();
+  Future<ThemeOption?> getThemeOption();
 }

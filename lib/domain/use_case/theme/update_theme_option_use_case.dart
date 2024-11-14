@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:lotura_v2/core/hive/theme_option.dart';
 import 'package:lotura_v2/domain/repository/theme/theme_repository.dart';
 
 class UpdateThemeOptionUseCase {
@@ -9,7 +9,7 @@ class UpdateThemeOptionUseCase {
   }) : _themeRepository = themeRepository;
 
   Future<void> execute({
-    required ThemeMode mode,
+    required ThemeOption mode,
   }) async =>
       await _themeRepository.updateThemeOption(mode: mode);
 }

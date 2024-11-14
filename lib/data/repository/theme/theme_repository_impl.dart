@@ -1,4 +1,4 @@
-import 'package:flutter/src/material/app.dart';
+import 'package:lotura_v2/core/hive/theme_option.dart';
 import 'package:lotura_v2/data/data_source/theme/local/local_theme_data_source.dart';
 import 'package:lotura_v2/domain/repository/theme/theme_repository.dart';
 
@@ -10,12 +10,12 @@ class ThemeRepositoryImpl implements ThemeRepository {
   }) : _localThemeDataSource = localThemeDataSource;
 
   @override
-  Future<ThemeMode?> getThemeOption() async =>
+  Future<ThemeOption?> getThemeOption() async =>
       await _localThemeDataSource.getThemeOption();
 
   @override
   Future<void> updateThemeOption({
-    required ThemeMode mode,
+    required ThemeOption mode,
   }) async =>
       await _localThemeDataSource.updateThemeOption(mode: mode);
 }

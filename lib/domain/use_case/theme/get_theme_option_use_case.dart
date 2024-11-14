@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:lotura_v2/core/hive/theme_option.dart';
 import 'package:lotura_v2/domain/repository/theme/theme_repository.dart';
 
 class GetThemeOptionUseCase {
@@ -8,5 +8,5 @@ class GetThemeOptionUseCase {
     required ThemeRepository themeRepository,
   }) : _themeRepository = themeRepository;
 
-  Future<ThemeMode?> execute() async => await _themeRepository.getThemeOption();
+  Future<ThemeOption?> execute() async => await _themeRepository.getThemeOption();
 }
