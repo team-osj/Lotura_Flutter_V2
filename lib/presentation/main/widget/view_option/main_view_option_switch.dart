@@ -14,7 +14,7 @@ class MainViewOptionSwitch extends ConsumerStatefulWidget {
 }
 
 class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
-  static const double width = 170, height = 38, itemWidth = 79, itemHeight = 30;
+  static const double width = 192, height = 41, itemWidth = 88, itemHeight = 33;
   @override
   Widget build(BuildContext context) {
     /// 화면 옵션 확인
@@ -28,7 +28,7 @@ class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
           height: height,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: LoturaLightColor.gray50,
+            color: Theme.of(context).colorScheme.secondary,
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -43,7 +43,7 @@ class _MainViewOptionSwitchState extends ConsumerState<MainViewOptionSwitch> {
                     width: itemWidth,
                     height: itemHeight,
                     decoration: BoxDecoration(
-                      color: LoturaLightColor.white,
+                      color: Theme.of(context).colorScheme.onSurface,
                       borderRadius: BorderRadius.circular(4),
                     ),
                   ),
