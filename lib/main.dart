@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:lotura_v2/core/hive/theme_option.dart';
 import 'package:lotura_v2/core/theme/lotura_theme.dart';
 import 'package:lotura_v2/core/di/lotura_router.dart';
 import 'package:lotura_v2/core/hive/laundry_room_option.dart';
@@ -9,7 +10,9 @@ import 'package:lotura_v2/core/theme/view_model/provider/get_theme_option_view_m
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+  /// Hive Adapter 사용 등록
   Hive.registerAdapter(LaundryRoomOptionAdapter());
+  Hive.registerAdapter(ThemeOptionAdapter());
   runApp(
     const ProviderScope(
       child: MyApp(),
