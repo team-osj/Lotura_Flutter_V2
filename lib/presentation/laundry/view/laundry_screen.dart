@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/component/lotura_scroll_widget.dart';
@@ -56,14 +57,14 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
+              const SizedBox(height: 28),
               Text(
                 localLaundryRoomOption!.replaceAll("측", " 측"),
                 style: LoturaTextStyle.heading3(
-                  color: LoturaLightColor.black,
+                  color: Theme.of(context).colorScheme.inverseSurface,
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 20),
               FittedBox(
                 child: Row(
                   children: [
@@ -111,7 +112,7 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 28),
               switch (laundryState) {
                 GetStreamLaundryState.success =>
                     ListView.builder(
@@ -123,7 +124,7 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
                           padding: EdgeInsets.only(
                             bottom: index == localLaundryRoomLocate.length - 1
                                 ? 24
-                                : 10,
+                                : 12,
                           ),
                           child: LaundryDeviceArrayWidget(
                             type: localLaundryRoomLocate
