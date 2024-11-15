@@ -19,8 +19,8 @@ class UpdateThemeOptionViewModel extends StateNotifier<UpdateThemeOptionState> {
       state = UpdateThemeOptionState.loading;
 
       final mode = switch(brightness) {
-        Brightness.dark => ThemeOption.light,
-        Brightness.light => ThemeOption.dark,
+        Brightness.dark => ThemeOption.dark,
+        Brightness.light => ThemeOption.light,
       };
 
       await _updateThemeOptionUseCase.execute(mode: mode);
