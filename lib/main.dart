@@ -10,6 +10,7 @@ import 'package:lotura_v2/core/theme/view_model/provider/get_theme_option_view_m
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+
   /// Hive Adapter 사용 등록
   Hive.registerAdapter(LaundryRoomOptionAdapter());
   Hive.registerAdapter(ThemeOptionAdapter());
