@@ -3,8 +3,8 @@ description: "A new Flutter project."
 
 publish_to: 'none'
 
-# 공지사항 구현 및 공지사항 확인 여부를 파악하여 사용자 경험 업그레이드
-version: 2.5.0+11
+# 라이트 & 다크모드 설계 및 구현
+version: 2.6.0+12
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
