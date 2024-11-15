@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 
 class SettingOptionWidget extends StatelessWidget {
   final Widget bottomSheet;
   final String title;
-  final String? option;
+  final Widget option;
 
   const SettingOptionWidget({
     super.key,
     required this.bottomSheet,
     required this.title,
-    this.option,
+    required this.option,
   });
 
   @override
@@ -20,7 +19,7 @@ class SettingOptionWidget extends StatelessWidget {
     return LoturaGesture(
       event: () => showModalBottomSheet(
         context: context,
-        backgroundColor: LoturaLightColor.white,
+        backgroundColor: Theme.of(context).colorScheme.onSurface,
         builder: (context) {
           return SafeArea(
             child: bottomSheet,
@@ -35,23 +34,10 @@ class SettingOptionWidget extends StatelessWidget {
             Text(
               title,
               style: LoturaTextStyle.subTitle2(
-                color: LoturaLightColor.black,
+                color: Theme.of(context).colorScheme.inverseSurface,
               ),
             ),
-            Row(
-              children: [
-                Text(
-                  option ?? "",
-                  style: LoturaTextStyle.subTitle2(
-                    color: LoturaLightColor.main500,
-                  ),
-                ),
-                const SizedBox(width: 8),
-                SvgPicture.asset(
-                  "$iconSettingAsset/right_arrow_icon.svg",
-                ),
-              ],
-            ),
+            option,
           ],
         ),
       ),
