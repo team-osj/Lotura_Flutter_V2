@@ -16,13 +16,13 @@ class LocalThemeDataSource {
     required ThemeOption mode,
   }) async {
     await init();
-    _themeBox!.add(mode);
+    _themeBox!.put("themeOption", mode);
   }
 
   Future<ThemeOption?> getThemeOption() async {
     await init();
     if (_themeBox!.isNotEmpty) {
-      return _themeBox!.getAt(0);
+      return _themeBox!.get("themeOption");
     }
     return null;
   }
