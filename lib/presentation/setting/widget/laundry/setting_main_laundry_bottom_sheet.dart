@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/component/lotura_toast_widget.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 import 'package:lotura_v2/core/hive/laundry_room_option.dart';
@@ -44,9 +45,9 @@ class SettingMainLaundryBottomSheet extends ConsumerWidget {
     });
     return Container(
       width: MediaQuery.of(context).size.width,
-      decoration: const BoxDecoration(
-        color: LoturaColor.white,
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.onSurface,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
         ),
@@ -58,11 +59,15 @@ class SettingMainLaundryBottomSheet extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 4),
-            GestureDetector(
-              onTap: () => context.pop("/setting"),
+            LoturaGesture(
+              event: () => context.pop("/setting"),
               child: Center(
                 child: SvgPicture.asset(
                   "$iconCoreAsset/bottom_arrow_icon.svg",
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).colorScheme.surfaceContainerLowest,
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
             ),
@@ -70,38 +75,35 @@ class SettingMainLaundryBottomSheet extends ConsumerWidget {
             Text(
               "메인 세탁실 설정",
               style: LoturaTextStyle.heading4(
-                color: LoturaColor.black,
+                color: Theme.of(context).colorScheme.inverseSurface,
               ),
             ),
             const SizedBox(height: 8),
             Text(
               "세탁실 탭에서 처음에 보여질 세탁실을 선택해보세요.",
               style: LoturaTextStyle.body2(
-                color: LoturaColor.gray700,
+                color: Theme.of(context).colorScheme.surfaceContainer,
               ),
             ),
             const SizedBox(height: 20),
-            GestureDetector(
-              behavior: HitTestBehavior.translucent,
-              onTap: () {
+            LoturaGesture(
+              event: () {
                 if (getLaundryRoomOption.option != "남자 학교측") {
                   updateLaundryOption.execute(LaundryRoomOption.maleSchool);
                 }
               },
               child: const SettingLaundryLocateWidget(option: "남자 학교측"),
             ),
-            GestureDetector(
-              behavior: HitTestBehavior.translucent,
-              onTap: () {
+            LoturaGesture(
+              event: () {
                 if (getLaundryRoomOption.option != "남자 기숙사측") {
                   updateLaundryOption.execute(LaundryRoomOption.maleDormitory);
                 }
               },
               child: const SettingLaundryLocateWidget(option: "남자 기숙사측"),
             ),
-            GestureDetector(
-              behavior: HitTestBehavior.translucent,
-              onTap: () {
+            LoturaGesture(
+              event: () {
                 if (getLaundryRoomOption.option != "여자 기숙사측") {
                   updateLaundryOption.execute(LaundryRoomOption.female);
                 }

@@ -26,26 +26,41 @@ class NoticeDetailScreen extends ConsumerStatefulWidget {
 }
 
 class _NoticeDetailScreenState extends ConsumerState<NoticeDetailScreen> {
+  late ScrollController controller;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final noticeListId = ref.watch(getNoticeViewModelProvider).values.elementAt(widget.index).id;
+      final noticeListId = ref
+          .watch(getNoticeViewModelProvider)
+          .values
+          .elementAt(widget.index)
+          .id;
       final readNoticeList = ref.watch(getNoticeOptionViewModelProvider).values;
       if (!readNoticeList.contains(noticeListId)) {
-        ref.read(updateNoticeOptionViewModelProvider.notifier).execute(id: noticeListId);
+        ref
+            .read(updateNoticeOptionViewModelProvider.notifier)
+            .execute(id: noticeListId);
+
         /// 데이터 재빌드
         ref.read(getNoticeOptionViewModelProvider.notifier).execute();
       }
     });
+    controller = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final noticeState = ref.watch(getNoticeViewModelProvider).state;
     final noticeList = ref.watch(getNoticeViewModelProvider).values;
-    PreferredSizeWidget appBar = const LoturaAppBar(popRoute: "/notice");
+    PreferredSizeWidget appBar = const LoturaAppBar();
     return switch (noticeState) {
       GetNoticeState.initial => LoturaLoadingLayout(appBar: appBar),
       GetNoticeState.loading => LoturaLoadingLayout(appBar: appBar),
@@ -53,6 +68,7 @@ class _NoticeDetailScreenState extends ConsumerState<NoticeDetailScreen> {
       GetNoticeState.success => LoturaLayout(
           appBar: appBar,
           child: LoturaScrollWidget(
+            controller: controller,
             child: Padding(
               padding: const EdgeInsets.all(24),
               child: Column(
@@ -61,14 +77,13 @@ class _NoticeDetailScreenState extends ConsumerState<NoticeDetailScreen> {
                   Text(
                     noticeList.elementAt(widget.index).title,
                     style: LoturaTextStyle.heading3(
-                      color: LoturaColor.black,
-                    ),
+                        color: Theme.of(context).colorScheme.inverseSurface),
                   ),
                   const SizedBox(height: 12),
                   Text(
                     noticeList.elementAt(widget.index).date.split(" ")[0],
                     style: LoturaTextStyle.button1(
-                      color: LoturaColor.gray600,
+                      color: Theme.of(context).colorScheme.surfaceContainerLow,
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -81,7 +96,9 @@ class _NoticeDetailScreenState extends ConsumerState<NoticeDetailScreen> {
                       await launchUrl(Uri.parse(href!));
                     },
                     styleSheet: MarkdownStyleSheet(
-                      p: LoturaTextStyle.body1(color: LoturaColor.black),
+                      p: LoturaTextStyle.body1(
+                        color: Theme.of(context).colorScheme.inverseSurface,
+                      ),
                     ),
                   ),
                 ],

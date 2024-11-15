@@ -23,13 +23,13 @@ class LoturaButton extends StatelessWidget {
       height: height ?? 56,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: backgroundColor ?? LoturaColor.main500,
+        color: backgroundColor ?? Theme.of(context).colorScheme.primary,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
         text,
         style: LoturaTextStyle.button1(
-          color: textColor ?? LoturaColor.white,
+          color: textColor ?? Theme.of(context).colorScheme.onSurface,
         ),
       ),
     );

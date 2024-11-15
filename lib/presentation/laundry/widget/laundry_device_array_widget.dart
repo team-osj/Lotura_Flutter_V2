@@ -10,6 +10,7 @@ import 'package:lotura_v2/presentation/laundry/provider/get_stream_laundry_view_
 import 'package:lotura_v2/presentation/laundry/widget/laundry_device_state_widget.dart';
 import 'package:lotura_v2/presentation/laundry/widget/laundry_dryer_array_widget.dart';
 import 'package:lotura_v2/presentation/laundry/widget/laundry_empty_widget.dart';
+import 'package:lotura_v2/presentation/laundry/widget/laundry_movement_widget.dart';
 
 class LaundryDeviceArrayWidget extends ConsumerWidget {
   final DeviceArrayType type;
@@ -49,10 +50,7 @@ class LaundryDeviceArrayWidget extends ConsumerWidget {
             type: DeviceType.dryer,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 33),
-          child: SvgPicture.asset("$iconLaundryAsset/movement_sign_icon.svg"),
-        ),
+        const LaundryMovementWidget(),
         LaundryDryerArrayWidget(
           left: LaundryEntity(
             id: item.elementAt(2),
@@ -73,10 +71,7 @@ class LaundryDeviceArrayWidget extends ConsumerWidget {
           state: formatLaundryState(count: 0),
           type: DeviceType.washer,
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 33),
-          child: SvgPicture.asset("$iconLaundryAsset/movement_sign_icon.svg"),
-        ),
+        const LaundryMovementWidget(),
         LaundryDryerArrayWidget(
           left: LaundryEntity(
             id: item.elementAt(1),
@@ -97,10 +92,7 @@ class LaundryDeviceArrayWidget extends ConsumerWidget {
           state: formatLaundryState(count: 0),
           type: DeviceType.washer,
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 33),
-          child: SvgPicture.asset("$iconLaundryAsset/movement_sign_icon.svg"),
-        ),
+        const LaundryMovementWidget(),
         LaundryDeviceStateWidget(
           id: item.elementAt(1),
           state: formatLaundryState(count: 1),
@@ -121,10 +113,7 @@ class LaundryDeviceArrayWidget extends ConsumerWidget {
             type: DeviceType.dryer,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 33),
-          child: SvgPicture.asset("$iconLaundryAsset/movement_sign_icon.svg"),
-        ),
+        const LaundryMovementWidget(),
         const LaundryEmptyWidget(),
       ];
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 
 class SettingAlarmSwitch extends StatelessWidget {
@@ -21,14 +22,14 @@ class SettingAlarmSwitch extends StatelessWidget {
           Text(
             option,
             style: LoturaTextStyle.button1(
-              color: LoturaColor.black,
+              color: LoturaLightColor.black,
             ),
           ),
           CupertinoSwitch(
             value: value,
-            activeColor: LoturaColor.main500,
-            trackColor: LoturaColor.gray100,
-            thumbColor: LoturaColor.white,
+            activeColor: Theme.of(context).colorScheme.primary,
+            trackColor: Theme.of(context).colorScheme.surfaceContainerLowest,
+            thumbColor: Theme.of(context).colorScheme.onSurface,
             onChanged: (value) {},
           ),
         ],

@@ -14,6 +14,7 @@ class LoturaTextStyle {
       fontSize: 12,
       fontWeight: FontWeight.w400,
       fontFamily: pretendard,
+      height: 1.191,
       overflow: overflow,
     );
   }
@@ -27,6 +28,7 @@ class LoturaTextStyle {
       fontSize: 12,
       fontWeight: FontWeight.w500,
       fontFamily: pretendard,
+      height: 1.191,
       overflow: overflow,
     );
   }
@@ -36,11 +38,13 @@ class LoturaTextStyle {
     TextOverflow overflow = TextOverflow.visible,
   }) {
     return TextStyle(
-        color: color,
-        fontSize: 42,
-        fontWeight: FontWeight.w600,
-        fontFamily: pretendard,
-        overflow: overflow);
+      color: color,
+      fontSize: 42,
+      fontWeight: FontWeight.w600,
+      fontFamily: pretendard,
+      height: 1.192,
+      overflow: overflow,
+    );
   }
 
   static TextStyle heading2({
@@ -48,11 +52,13 @@ class LoturaTextStyle {
     TextOverflow overflow = TextOverflow.visible,
   }) {
     return TextStyle(
-        color: color,
-        fontSize: 32,
-        fontWeight: FontWeight.w600,
-        fontFamily: pretendard,
-        overflow: overflow);
+      color: color,
+      fontSize: 32,
+      fontWeight: FontWeight.w600,
+      fontFamily: pretendard,
+      height: 1.193,
+      overflow: overflow,
+    );
   }
 
   static TextStyle heading3({
@@ -64,6 +70,7 @@ class LoturaTextStyle {
       fontSize: 24,
       fontWeight: FontWeight.w600,
       fontFamily: pretendard,
+      height: 1.191,
       overflow: overflow,
     );
   }
@@ -77,6 +84,7 @@ class LoturaTextStyle {
       fontSize: 20,
       fontWeight: FontWeight.w600,
       fontFamily: pretendard,
+      height: 1.195,
       overflow: overflow,
     );
   }
@@ -90,6 +98,7 @@ class LoturaTextStyle {
       fontSize: 18,
       fontWeight: FontWeight.w600,
       fontFamily: pretendard,
+      height: 1.194,
       overflow: overflow,
     );
   }
@@ -103,6 +112,7 @@ class LoturaTextStyle {
       fontSize: 16,
       fontWeight: FontWeight.w600,
       fontFamily: pretendard,
+      height: 1.193,
       overflow: overflow,
     );
   }
@@ -116,6 +126,7 @@ class LoturaTextStyle {
       fontSize: 14,
       fontWeight: FontWeight.w600,
       fontFamily: pretendard,
+      height: 1.192,
       overflow: overflow,
     );
   }
@@ -129,6 +140,7 @@ class LoturaTextStyle {
       fontSize: 14,
       fontWeight: FontWeight.w500,
       fontFamily: pretendard,
+      height: 1.192,
       overflow: overflow,
     );
   }
@@ -142,6 +154,7 @@ class LoturaTextStyle {
       fontSize: 12,
       fontWeight: FontWeight.w500,
       fontFamily: pretendard,
+      height: 1.191,
       overflow: overflow,
     );
   }
@@ -155,6 +168,7 @@ class LoturaTextStyle {
       fontSize: 10,
       fontWeight: FontWeight.w500,
       fontFamily: pretendard,
+      height: 1.19,
       overflow: overflow,
     );
   }
@@ -168,6 +182,7 @@ class LoturaTextStyle {
       fontSize: 16,
       fontWeight: FontWeight.w500,
       fontFamily: pretendard,
+      height: 1.193,
       overflow: overflow,
     );
   }
@@ -181,6 +196,7 @@ class LoturaTextStyle {
       fontSize: 12,
       fontWeight: FontWeight.w600,
       fontFamily: pretendard,
+      height: 1.191,
       overflow: overflow,
     );
   }

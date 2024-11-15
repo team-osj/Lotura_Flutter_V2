@@ -1,4 +1,4 @@
-package com.example.lotura_v2
+package com.osj.lotura_v2
 
 import io.flutter.embedding.android.FlutterActivity
 

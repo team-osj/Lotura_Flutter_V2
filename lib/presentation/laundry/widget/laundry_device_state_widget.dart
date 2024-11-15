@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lotura_v2/core/component/lotura_bottom_sheet.dart';
+import 'package:lotura_v2/core/component/laundry_bottom_sheet.dart';
+import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 import 'package:lotura_v2/core/provider/state/device/device_state.dart';
 import 'package:lotura_v2/core/provider/state/device/device_type.dart';
@@ -19,27 +20,24 @@ class LaundryDeviceStateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTap: () {
+    return LoturaGesture(
+      event: () {
         showModalBottomSheet(
           context: context,
-          backgroundColor: LoturaColor.white,
+          backgroundColor: Theme.of(context).colorScheme.onSurface,
           builder: (context) {
-            return SafeArea(
-              child: LoturaBottomSheet(
-                state: state,
-                type: type,
-                actionFunc: () {},
-                count: 1,
-              ),
+            return LaundryBottomSheet(
+              state: state,
+              type: type,
+              actionFunc: () {},
+              id: id,
             );
           },
         );
       },
       child: Container(
         decoration: BoxDecoration(
-          color: state.color,
+          color: state.themeColorHandler(context),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Padding(
@@ -52,7 +50,7 @@ class LaundryDeviceStateWidget extends StatelessWidget {
               SvgPicture.asset(
                 "$iconLaundryAsset/${type.name}_icon.svg",
                 colorFilter: ColorFilter.mode(
-                  state.iconColor,
+                  state.themeIconColorHandler(context),
                   BlendMode.srcIn,
                 ),
               ),
@@ -60,13 +58,13 @@ class LaundryDeviceStateWidget extends StatelessWidget {
               Text(
                 "$id번",
                 style: LoturaTextStyle.subTitle3(
-                  color: LoturaColor.black,
+                  color: Theme.of(context).colorScheme.inverseSurface,
                 ),
               ),
               Text(
                 type.text,
                 style: LoturaTextStyle.body1(
-                  color: LoturaColor.black,
+                  color: Theme.of(context).colorScheme.inverseSurface,
                 ),
               ),
             ],

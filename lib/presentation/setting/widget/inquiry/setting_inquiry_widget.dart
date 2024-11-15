@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -9,9 +10,8 @@ class SettingInquiryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTap: () async => await launchUrl(
+    return LoturaGesture(
+      event: () async => await launchUrl(
         Uri.parse('https://open.kakao.com/o/sHjnH1Se'),
         mode: LaunchMode.externalApplication,
       ),
@@ -23,11 +23,15 @@ class SettingInquiryWidget extends StatelessWidget {
             Text(
               "문의하기",
               style: LoturaTextStyle.subTitle2(
-                color: LoturaColor.black,
+                color: Theme.of(context).colorScheme.inverseSurface,
               ),
             ),
             SvgPicture.asset(
               "$iconSettingAsset/right_arrow_icon.svg",
+              colorFilter: ColorFilter.mode(
+                Theme.of(context).colorScheme.surfaceTint,
+                BlendMode.srcIn,
+              ),
             ),
           ],
         ),

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/constants/lotura_asset.dart';
-import 'package:lotura_v2/core/constants/lotura_color.dart';
+import 'package:lotura_v2/core/theme/view_model/provider/update_theme_option_view_model_provider.dart';
 import 'package:lotura_v2/presentation/main/widget/view_option/main_view_option_switch.dart';
 import 'package:lotura_v2/presentation/notice/provider/get_notice_option_view_model_provider.dart';
 import 'package:lotura_v2/presentation/notice/provider/get_notice_view_model_provider.dart';
@@ -27,7 +28,7 @@ class MainAppBar extends ConsumerWidget implements PreferredSizeWidget {
 
           /// title property 사용 시, 양 옆 padding 제거
           titleSpacing: 0,
-          backgroundColor: LoturaColor.white,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           title: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Row(
@@ -36,17 +37,22 @@ class MainAppBar extends ConsumerWidget implements PreferredSizeWidget {
                 const MainViewOptionSwitch(),
                 Row(
                   children: [
-                    GestureDetector(
-                      onTap: () => context.push("/notice"),
+                    LoturaGesture(
+                      event: () => context.push("/notice"),
                       child: SvgPicture.asset(
-                        "$iconCoreAsset/${readNoticeList.values.length != noticeList.values.length ? "unread_" : ""}bell_icon.svg",
+                        "$iconThemeAsset/bell/${readNoticeList.values.length != noticeList.values.length ? "${Theme.of(context).colorScheme.brightness.name}_unread_" : ""}bell_icon.svg",
                       ),
                     ),
                     const SizedBox(width: 12),
-                    GestureDetector(
-                      onTap: () => context.push("/setting"),
-                      child:
-                          SvgPicture.asset("$iconCoreAsset/setting_icon.svg"),
+                    LoturaGesture(
+                      event: () => context.push("/setting"),
+                      child: SvgPicture.asset(
+                        "$iconCoreAsset/setting_icon.svg",
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).colorScheme.onSecondary,
+                          BlendMode.srcIn,
+                        ),
+                      ),
                     ),
                   ],
                 )
@@ -59,5 +65,5 @@ class MainAppBar extends ConsumerWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(54);
+  Size get preferredSize => const Size.fromHeight(57);
 }

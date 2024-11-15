@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lotura_v2/core/component/lotura_app_bar.dart';
+import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/component/lotura_scroll_widget.dart';
 import 'package:lotura_v2/core/constants/lotura_style.dart';
 import 'package:lotura_v2/core/layout/lotura_layout.dart';
@@ -20,12 +21,21 @@ class NoticeMainScreen extends ConsumerStatefulWidget {
 }
 
 class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
+  late ScrollController controller;
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(getNoticeViewModelProvider.notifier).execute();
     });
+    controller = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -33,8 +43,7 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
     final readNoticeList = ref.watch(getNoticeOptionViewModelProvider).values;
     final noticeList = ref.watch(getNoticeViewModelProvider).values;
     final noticeState = ref.watch(getNoticeViewModelProvider).state;
-    PreferredSizeWidget appBar =
-        const LoturaAppBar(popRoute: "/", title: "공지사항");
+    PreferredSizeWidget appBar = const LoturaAppBar(title: "공지사항");
     return switch (noticeState) {
       GetNoticeState.initial => LoturaLoadingLayout(appBar: appBar),
       GetNoticeState.loading => LoturaLoadingLayout(appBar: appBar),
@@ -42,6 +51,7 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
       GetNoticeState.success => LoturaLayout(
           appBar: appBar,
           child: LoturaScrollWidget(
+            controller: controller,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(
@@ -49,7 +59,7 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
                 children: [
                   const SizedBox(height: 8),
                   Image.asset(
-                    "$imageNoticeAsset/notice_banner_image.png",
+                    "$imageNoticeAsset/notice_${Theme.of(context).colorScheme.brightness.name}_banner_image.png",
                   ),
                   const SizedBox(height: 12),
                   ListView.builder(
@@ -62,9 +72,8 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
                     itemBuilder: (context, index) {
                       final isRead = readNoticeList
                           .contains(noticeList.elementAt(index).id);
-                      return GestureDetector(
-                        behavior: HitTestBehavior.translucent,
-                        onTap: () =>
+                      return LoturaGesture(
+                        event: () =>
                             context.push("/noticeDetail", extra: index),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 16),
@@ -73,7 +82,12 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SvgPicture.asset(
-                                  "$iconNoticeAsset/comment_icon.svg"),
+                                "$iconNoticeAsset/comment_icon.svg",
+                                colorFilter: ColorFilter.mode(
+                                  Theme.of(context).colorScheme.primaryFixed,
+                                  BlendMode.srcIn,
+                                ),
+                              ),
                               const SizedBox(width: 24),
                               Expanded(
                                 child: Column(
@@ -82,7 +96,9 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
                                     Text(
                                       noticeList.elementAt(index).title,
                                       style: LoturaTextStyle.subTitle2(
-                                        color: LoturaColor.black,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .inverseSurface,
                                       ),
                                     ),
                                     const SizedBox(height: 8),
@@ -94,20 +110,27 @@ class _NoticeMainScreenState extends ConsumerState<NoticeMainScreen> {
                                               .date
                                               .split(" ")[0],
                                           style: LoturaTextStyle.label(
-                                            color: LoturaColor.gray600,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .surfaceContainerLow,
                                           ),
                                         ),
                                         const SizedBox(width: 10),
-                                        isRead ? Text(
+                                        isRead
+                                            ? Text(
                                                 "읽음",
                                                 style: LoturaTextStyle.body3(
-                                                  color: LoturaColor.gray500,
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .onSecondary,
                                                 ),
                                               )
                                             : Text(
                                                 "안 읽음",
                                                 style: LoturaTextStyle.body3(
-                                                  color: LoturaColor.main500,
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .primary,
                                                 ),
                                               ),
                                       ],
