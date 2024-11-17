@@ -3,8 +3,8 @@ description: "Lotura is for you 😘"
 
 publish_to: 'none'
 
-# 라이트 & 다크모드 설계 및 구현
-version: 2.6.0+12
+# 불필요한 코드 제거 및 레이아웃 구조 변경
+version: 2.6.1+13
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
