@@ -93,7 +93,10 @@ class _NoticeDetailScreenState extends ConsumerState<NoticeDetailScreen> {
                     physics: const NeverScrollableScrollPhysics(),
                     data: noticeList.elementAt(widget.index).contents,
                     onTapLink: (text, href, title) async {
-                      await launchUrl(Uri.parse(href!));
+                      await launchUrl(
+                        Uri.parse(href!),
+                        mode: LaunchMode.externalApplication,
+                      );
                     },
                     styleSheet: MarkdownStyleSheet(
                       p: LoturaTextStyle.body1(

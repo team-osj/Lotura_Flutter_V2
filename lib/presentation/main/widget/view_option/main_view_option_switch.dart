@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lotura_v2/core/component/lotura_gesture.dart';
-import 'package:lotura_v2/core/constants/lotura_color.dart';
 import 'package:lotura_v2/presentation/main/provider/view_option_view_model_provider.dart';
 import 'package:lotura_v2/presentation/main/widget/view_option/main_view_option_button.dart';
 
