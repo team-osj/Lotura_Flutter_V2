@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lotura_v2/core/constants/lotura_color.dart';
 
 class LoturaLayout extends StatelessWidget {
   final Color? backgroundColor;

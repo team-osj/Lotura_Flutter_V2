@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lotura_v2/core/constants/lotura_style.dart';
 
 class LoturaScrollWidget extends StatelessWidget {
   final ScrollController controller;

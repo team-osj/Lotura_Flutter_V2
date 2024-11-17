@@ -37,24 +37,19 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
   @override
   Widget build(BuildContext context) {
     final localLaundryRoomOption =
-        ref
-            .watch(localLaundryRoomOptionViewModelProvider)
-            .option;
+        ref.watch(localLaundryRoomOptionViewModelProvider).option;
     final localLaundryRoomLocate =
-        ref
-            .watch(localLaundryRoomOptionViewModelProvider)
-            .locate;
-    final laundryState = ref
-        .watch(getStreamLaundryViewModelProvider)
-        .state;
+        ref.watch(localLaundryRoomOptionViewModelProvider).locate;
+    final laundryState = ref.watch(getStreamLaundryViewModelProvider).state;
     final updateLocalLaundryRoomOption =
-    ref.read(localLaundryRoomOptionViewModelProvider.notifier);
+        ref.read(localLaundryRoomOptionViewModelProvider.notifier);
     return LoturaLayout(
       child: LoturaScrollWidget(
         controller: controller,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 28),
@@ -114,36 +109,42 @@ class _LaundryScreenState extends ConsumerState<LaundryScreen> {
               ),
               const SizedBox(height: 28),
               switch (laundryState) {
-                GetStreamLaundryState.success =>
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: localLaundryRoomLocate!.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: EdgeInsets.only(
-                            bottom: index == localLaundryRoomLocate.length - 1
-                                ? 24
-                                : 12,
-                          ),
-                          child: LaundryDeviceArrayWidget(
-                            type: localLaundryRoomLocate
-                                .elementAt(index)
-                                .keys
-                                .single,
-                            item: localLaundryRoomLocate
-                                .elementAt(index)
-                                .values
-                                .single,
-                          ),
-                        );
-                      },
+                GetStreamLaundryState.success => ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: localLaundryRoomLocate!.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(
+                          bottom: index == localLaundryRoomLocate.length - 1
+                              ? 24
+                              : 12,
+                        ),
+                        child: LaundryDeviceArrayWidget(
+                          type: localLaundryRoomLocate
+                              .elementAt(index)
+                              .keys
+                              .single,
+                          item: localLaundryRoomLocate
+                              .elementAt(index)
+                              .values
+                              .single,
+                        ),
+                      );
+                    },
+                  ),
+                GetStreamLaundryState.failure => Center(
+                  child: Text(
+                      "네트워크 연결이 끊겼습니다.",
+                      style: LoturaTextStyle.heading4(
+                        color: Theme.of(context).colorScheme.surfaceContainerLow,
+                      ),
                     ),
-                GetStreamLaundryState.failure => const Text("인터넷 연결을 확인해주세요."),
+                ),
                 GetStreamLaundryState.initial =>
-                const Center(child: CupertinoActivityIndicator()),
+                  const Center(child: CupertinoActivityIndicator()),
                 GetStreamLaundryState.loading =>
-                const Center(child: CupertinoActivityIndicator()),
+                  const Center(child: CupertinoActivityIndicator()),
               }
             ],
           ),

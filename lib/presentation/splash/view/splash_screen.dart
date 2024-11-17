@@ -38,8 +38,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
 
       /// 공지사항 전체 리스트를 GET 요청
       ref.read(getNoticeViewModelProvider.notifier).execute();
-      Future.delayed(const Duration(milliseconds: 1100))
-          .then((value) => context.go("/"));
+      Future.delayed(const Duration(milliseconds: 1100)).then((value) => context.go("/"));
     });
   }
 

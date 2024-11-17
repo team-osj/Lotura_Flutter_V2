@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lotura_v2/core/component/laundry_bottom_sheet.dart';
 import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/constants/lotura_asset.dart';
-import 'package:lotura_v2/core/constants/lotura_color.dart';
 import 'package:lotura_v2/core/constants/lotura_text_style.dart';
 import 'package:lotura_v2/core/provider/state/device/device_state.dart';
 import 'package:lotura_v2/core/provider/state/device/device_type.dart';
