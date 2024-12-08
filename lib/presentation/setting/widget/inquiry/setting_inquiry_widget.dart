@@ -12,7 +12,7 @@ class SettingInquiryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return LoturaGesture(
       event: () async => await launchUrl(
-        Uri.parse('https://open.kakao.com/o/sHjnH1Se'),
+        Uri.parse('https://www.instagram.com/team.osj'),
         mode: LaunchMode.externalApplication,
       ),
       child: Padding(
