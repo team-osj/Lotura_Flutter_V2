@@ -3,8 +3,8 @@ description: "Lotura is for you 😘"
 
 publish_to: 'none'
 
-# 문의하기 연결 링크 수정
-version: 2.6.2+14
+# 디렉토리 경로 리팩토링
+version: 2.6.3+15
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
