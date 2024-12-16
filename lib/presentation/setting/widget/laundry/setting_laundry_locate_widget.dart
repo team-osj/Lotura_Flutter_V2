@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lotura_v2/core/constants/lotura_style.dart';
+import 'package:lotura_v2/core/di/lotura_style.dart';
 import 'package:lotura_v2/presentation/setting/provider/laundry/get_laundry_room_option_view_model_provider.dart';
 import 'package:lotura_v2/presentation/setting/provider/laundry/update_laundry_room_option_view_model_provider.dart';
 import 'package:lotura_v2/presentation/setting/provider/state/laundry/update_laundry_room_option_state.dart';

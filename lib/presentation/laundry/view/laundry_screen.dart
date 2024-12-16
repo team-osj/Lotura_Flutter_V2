@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/component/lotura_scroll_widget.dart';
-import 'package:lotura_v2/core/constants/lotura_style.dart';
+import 'package:lotura_v2/core/di/lotura_style.dart';
 import 'package:lotura_v2/core/dummy/laundry_room_locate_dummy.dart';
 import 'package:lotura_v2/core/layout/lotura_layout.dart';
 import 'package:lotura_v2/presentation/laundry/provider/get_stream_laundry_view_model_provider.dart';

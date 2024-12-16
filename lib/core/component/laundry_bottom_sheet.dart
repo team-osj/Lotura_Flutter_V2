@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lotura_v2/core/component/lotura_button.dart';
 import 'package:lotura_v2/core/component/lotura_gesture.dart';
-import 'package:lotura_v2/core/constants/lotura_style.dart';
+import 'package:lotura_v2/core/di/lotura_style.dart';
 import 'package:lotura_v2/core/provider/state/device/device_state.dart';
 import 'package:lotura_v2/core/provider/state/device/device_type.dart';
 

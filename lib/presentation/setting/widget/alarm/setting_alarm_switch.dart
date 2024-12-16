@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lotura_v2/core/constants/lotura_style.dart';
+import 'package:lotura_v2/core/di/lotura_style.dart';
 
 class SettingAlarmSwitch extends StatelessWidget {
   final String option;

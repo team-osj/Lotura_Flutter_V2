@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lotura_v2/core/component/lotura_gesture.dart';
-import 'package:lotura_v2/core/constants/lotura_asset.dart';
+import 'package:lotura_v2/core/di/lotura_asset.dart';
 import 'package:lotura_v2/presentation/main/widget/view_option/main_view_option_switch.dart';
 import 'package:lotura_v2/presentation/notice/provider/get_notice_option_view_model_provider.dart';
 import 'package:lotura_v2/presentation/notice/provider/get_notice_view_model_provider.dart';
