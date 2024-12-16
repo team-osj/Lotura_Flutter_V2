@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lotura_v2/core/constants/lotura_asset.dart';
+import 'package:lotura_v2/core/di/lotura_asset.dart';
 
 class LaundryMovementWidget extends StatelessWidget {
   const LaundryMovementWidget({super.key});

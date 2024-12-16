@@ -3,7 +3,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lotura_v2/core/component/lotura_app_bar.dart';
 import 'package:lotura_v2/core/component/lotura_scroll_widget.dart';
-import 'package:lotura_v2/core/constants/lotura_style.dart';
+import 'package:lotura_v2/core/di/lotura_style.dart';
 import 'package:lotura_v2/core/layout/lotura_layout.dart';
 import 'package:lotura_v2/core/layout/lotura_loading_layout.dart';
 import 'package:lotura_v2/core/layout/lotura_network_error_layout.dart';

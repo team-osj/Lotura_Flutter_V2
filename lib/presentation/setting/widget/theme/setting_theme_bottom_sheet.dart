@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/component/lotura_toast_widget.dart';
-import 'package:lotura_v2/core/constants/lotura_style.dart';
+import 'package:lotura_v2/core/di/lotura_style.dart';
 import 'package:lotura_v2/core/theme/view_model/provider/get_theme_option_view_model_provider.dart';
 import 'package:lotura_v2/core/theme/view_model/provider/update_theme_option_view_model_provider.dart';
 import 'package:lotura_v2/core/theme/view_model/state/update_theme_option_state.dart';

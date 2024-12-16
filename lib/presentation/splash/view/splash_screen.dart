@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lotura_v2/core/constants/lotura_style.dart';
+import 'package:lotura_v2/core/di/lotura_style.dart';
 import 'package:lotura_v2/core/layout/lotura_layout.dart';
 import 'package:lotura_v2/presentation/laundry/provider/get_stream_laundry_view_model_provider.dart';
 import 'package:lotura_v2/core/theme/view_model/provider/get_theme_option_view_model_provider.dart';

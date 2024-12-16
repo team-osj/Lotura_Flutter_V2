@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lotura_v2/core/constants/lotura_text_style.dart';
+import 'package:lotura_v2/core/component/lotura_text_style.dart';
 
 class ApplyDeviceStateWidget extends StatelessWidget {
   final String state;

@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lotura_v2/core/component/lotura_app_bar.dart';
 import 'package:lotura_v2/core/component/lotura_gesture.dart';
 import 'package:lotura_v2/core/component/lotura_scroll_widget.dart';
-import 'package:lotura_v2/core/constants/lotura_style.dart';
+import 'package:lotura_v2/core/di/lotura_style.dart';
 import 'package:lotura_v2/core/layout/lotura_layout.dart';
 import 'package:lotura_v2/core/layout/lotura_loading_layout.dart';
 import 'package:lotura_v2/core/layout/lotura_network_error_layout.dart';
