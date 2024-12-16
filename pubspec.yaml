@@ -40,7 +40,7 @@ flutter_launcher_icons:
   android: "launcher_icon"
   remove_alpha_ios: true
   ios: true
-  image_path: "assets/icon/core/lotura_app_icon.png"
+  image_path: "assets/image/core/lotura_app_image.png"
   min_sdk_android: 21
 
 flutter:
@@ -50,6 +50,7 @@ flutter:
     - assets/icon/core/
     - assets/icon/laundry/
     - assets/icon/notice/
+    - assets/icon/logo/
     - assets/icon/setting/
     - assets/icon/theme/
     - assets/icon/theme/bell/
